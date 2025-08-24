@@ -2,14 +2,16 @@
 
 <img align="right" src="images/Justine.profile.png" width="170" height="160">
 
-# Hi, I'm Justine Jay D. Tayting
-### 2nd Year Computer Science Student | CCA
+# Hi, I'm Justine
+### 2nd Year ComSci Student | CCA
 
 ---
+Welcome to my **Object-Oriented Programming Portfolio**! This portfolio contains my 7OOP lab exercises, showcasing my skills in organizing, managing, 
+and handling data based on what I learned in class. It reflects my progress and understanding of the subject.
 
 ## About Me
 
-I’m **Justine Jay D. Tayting**, a 2nd year Computer Science student at CCA.  
+I’m **Justine Jay D. Tayting**, a 2nd year Computer Science student at City College of Angeles.  
 - 🌱 Currently learning **Python**  
 - ✅ Already learned **C, Java**  
 - 🎯 Goal: improve my coding skills and build meaningful projects  
