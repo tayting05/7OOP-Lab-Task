@@ -1,6 +1,6 @@
 <img width="1100" height="150" alt="image" src="images/Justine_Banner.png" />
 
-<img align="right" src="images/Justine.profile.jfif" width="170" height="160">
+<img align="right" src="images/Justine.profile.png" width="170" height="160">
 
 # Hi, I'm Justine Jay D. Tayting
 ### 2nd Year Computer Science Student | CCA
