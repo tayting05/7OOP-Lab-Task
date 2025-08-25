@@ -24,10 +24,20 @@ I’m **Justine Jay D. Tayting**, a 2nd year Computer Science student at City Co
 - Data structures and algorithms  
 - Networking basics  
 
-### Programming Languages
+---
+
+## Education
+ **Senior High School:** Angeles City Senior High School (ABM)  
+ 
+ **Junior High School:** Francisco G. Nepomuceno Memorial High School 
+ 
+ **Elementary:** Gueco Balibago Elementary School
+
+---
+ 
+## Programming Languages
 - C  
 - Java  
-- Python (learning)
 
 ---
 
@@ -40,9 +50,21 @@ I’m **Justine Jay D. Tayting**, a 2nd year Computer Science student at City Co
 ---
 
 ## Fun Facts About Me
-- I study better with music 🎶  
+- I like playing games like 5v5 moba, and rpg games 
+- I like eating 
+- I study better with music 🎶
+- I code like a sloth 🤣  
 - I like improving small projects step by step  
 
+---
+
+## Skills
+- Adaptability 
+- Time Management  
+- Positive thinking   
+- Open Minded 
+- Good Listener   
+ 
 ---
 
 ## Contacts
