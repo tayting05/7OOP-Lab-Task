@@ -49,11 +49,11 @@ I’m **Justine Jay D. Tayting**, a 2nd year Computer Science student at City Co
 ---
 
 ## Fun Facts About Me
-- I like playing games like 5v5 moba, and rpg games 
 - I like eating 
 - I study better with music 🎶
 - I code like a sloth 🤣  
-- I like improving small projects step by step  
+- I like improving small projects step by step
+- I like playing games like 5v5 moba, and rpg games  
 
 ---
 
