@@ -68,7 +68,7 @@ I’m **Justine Jay D. Tayting**, a 2nd year Computer Science student at City Co
 ---
 
 ## Contacts
-- [Facebook](https://facebook.com/tayting05/)
+- [Facebook](https://facebook.com/tayting05)
 - [Instagram](https://instagram.com/tayting05/)
 - [Tiktok](https://tiktok.com/@tayting05/)
 - [LinkedIn](https://linkedin.com/in/justine-jay-tayting-406aa6332/)  
