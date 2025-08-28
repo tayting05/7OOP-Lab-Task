@@ -2,6 +2,6 @@ title: 7OOP Portfolio
 description: About ME
 logo: images/Justine.profile.png
 
-remote_theme: pages-themes/robottits@v0.2.0
+remote_theme: pages-themes/midnight@v0.2.0
 plugins:
-- jekyll-fork-theme
+- jekyll-remote-theme
