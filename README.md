@@ -12,8 +12,7 @@ and handling data based on what I learned in class. It reflects my progress and 
 ## About Me
 
 I’m **Justine Jay D. Tayting**, a 2nd year Computer Science student at City College of Angeles.  
-- 🌱 Currently learning **Python**  
-- ✅ Already learned **C, Java**  
+- 🌱 Currently learning **Python**   
 - 🎯 Goal: improve my coding skills and build meaningful projects  
 - 🎧 Hobbies: music, coding, and gaming 
 
