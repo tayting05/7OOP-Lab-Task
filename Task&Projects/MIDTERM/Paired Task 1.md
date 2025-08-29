@@ -49,17 +49,17 @@
  
 ---
 ## **STEP 3. Design the MODEL using a Class Diagram** (You may use draw.io to represent the Blueprint of all the class that you need to create)
-<img alt="image" src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Class%20Diagram%201.png?raw=true" />
+<img alt="image" src="https://github.com/tayting05/7OOP-Lab-Task/blob/dba8cb693959f21c24331e1a863b72a50a449e64/images/Class%20Diagram%201.png" />
 
 ---
 ## **STEP 4. Implement the class using Java code** construct of each interacting entities that you have identified.
 
-<img  src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Patient%20Method.png?raw=true" >
-<img  src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Patient%20Method%202.png?raw=true" >
-<img  src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Patient%20Method%203.png?raw=true" >
-<img  src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/HosRoom%20Method.png?raw=true" >
-<img  src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Hospital%20Flow%20Method.png?raw=true" >
-<img  src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Main%20Method.png?raw=true" >
+<img  src="https://github.com/tayting05/7OOP-Lab-Task/blob/dba8cb693959f21c24331e1a863b72a50a449e64/images/Patient%20Method.png" >
+<img  src="https://github.com/tayting05/7OOP-Lab-Task/blob/dba8cb693959f21c24331e1a863b72a50a449e64/images/Patient%20Method%202.png" >
+<img  src="https://github.com/tayting05/7OOP-Lab-Task/blob/3bd08cd79cc9b15ee1db196fdd35be6360fa7a2f/images/Patient%20Method%203.png" >
+<img  src="https://github.com/tayting05/7OOP-Lab-Task/blob/3bd08cd79cc9b15ee1db196fdd35be6360fa7a2f/images/HosRoom%20Method.png" >
+<img  src="https://github.com/tayting05/7OOP-Lab-Task/blob/3bd08cd79cc9b15ee1db196fdd35be6360fa7a2f/images/Hospital%20Flow%20Method.png" >
+<img  src="https://github.com/tayting05/7OOP-Lab-Task/blob/3bd08cd79cc9b15ee1db196fdd35be6360fa7a2f/images/Main%20Method.png" >
 
 ---
 ## **Note: Highlight all the outputs following the example from STEP 1 to STEP 4 as shown in the lecture**
