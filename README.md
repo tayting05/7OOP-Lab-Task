@@ -44,7 +44,7 @@ I’m **Justine Jay Tayting**, a 2nd year Computer Science student at City Colle
 
 - **(MIDTERM) Paired Task 1** – Object Oriented Analysis
   
-  Paired Task 1: [Link Here](https://github.com/tayting05/7OOP-Lab-Task/blob/main/Task&Projects/MIDTERM/Paired%20Task%201.md)
+  Paired Task 1: [Link Here](https://github.com/tayting05/7OOP-Lab-Task/blob/41330265c450b5c1f52e95582c5a7b85e2118ecb/Task%26Projects/MIDTERM/Paired%20Task%201/README.md)
 
 ---
 
