@@ -50,8 +50,7 @@ I’m **Justine Jay Tayting**, a 2nd year Computer Science student at City Colle
 
 ## Fun Facts About Me
 - I like eating 
-- I study better with music 🎶
-- I code like a sloth 🤣  
+- I study better with music 🎶 
 - I like improving small projects step by step
 - I like playing games like 5v5 moba, and rpg games  
 
