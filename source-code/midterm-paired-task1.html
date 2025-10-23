@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Midterm Paired Task 1 - Justine Jay Tayting</title>
+  <style>
+    :root {
+      --bg: #0f1724;
+      --muted: #9aa4b2;
+      --accent: #6ee7b7;
+    }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: #e6eef6;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      margin-bottom: 24px;
+    }
+    .back {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    h1 {
+      margin: 10px 0 5px;
+    }
+    h2 {
+      margin-top: 28px;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 6px;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, var(--accent), #67d4f0);
+      color: #042;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 10px;
+    }
+    li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="back" href="https://tayting05.github.io/7OOP-Lab-Task/index.html">← Back to Portfolio</a>
+      <h1>Midterm Paired Task 1</h1>
+      <p class="muted">Object Oriented Analysis and Design</p>
+    </header>
+
+    <section>
+      <h2>Problem Statement</h2>
+      <p><strong>Tiny Hospital</strong> keeps information on <strong>patients</strong> and <strong>hospital rooms</strong>. The system assigns each patient a unique ID number. In addition, the patient’s name and date of birth are recorded. Some patients are resident patients (they spend at least one night in the hospital), while others are outpatients (they are treated and released).</p>
+      <p>Resident patients are assigned to a room. Each room is identified by a room number, type (private or semi-private), and fee. Over time, each room will have many patients who stay in it. Each resident patient will stay in only one room. The hospital system can view patient information and check whether a room is occupied or not. Both patient and room entities allow adding, updating, and searching records.</p>
+    </section>
+
+    <section>
+      <h2>Step 1. Identify Objects</h2>
+      <ul>
+        <li>Patient</li>
+        <li>Resident Patient</li>
+        <li>OutPatient</li>
+        <li>Hospital Room</li>
+        <li>Hospital Flow</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Step 2. Identify Properties and Methods</h2>
+      <p class="muted">Objects with their properties and behaviors:</p>
+      <h3>Patient</h3>
+      <ul>
+        <li>patientID – <em>addPatient()</em></li>
+        <li>name – <em>updatePatient()</em></li>
+        <li>dateOfBirth – <em>searchPatientinfo()</em></li>
+        <li>patientType – <em>getPatientinfo()</em></li>
+      </ul>
+
+      <h3>Resident Patient</h3>
+      <ul>
+        <li>roompatient – <em>assignRoom()</em></li>
+      </ul>
+
+      <h3>OutPatient</h3>
+      <ul>
+        <li><em>discharge()</em></li>
+      </ul>
+
+      <h3>Hospital Room</h3>
+      <ul>
+        <li>roomNumber</li>
+        <li>roomType – <em>assignPatient()</em></li>
+        <li>roomFee – <em>releasePatient()</em></li>
+        <li>occupied – <em>isOccupied()</em></li>
+      </ul>
+
+      <h3>Hospital Flow</h3>
+      <ul>
+        <li>patientList – <em>addPatient()</em></li>
+        <li>roomList – <em>updatePatient()</em></li>
+        <li><em>searchPatient()</em></li>
+        <li><em>viewPatient()</em></li>
+        <li><em>viewRstat()</em></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Step 3. Design the Model</h2>
+      <p class="muted">Class Diagram (created using draw.io):</p>
+      <img src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Class%20Diagram%201.png?raw=true" alt="Class Diagram">
+    </section>
+
+    <section>
+      <h2>Step 4. Implement the Classes</h2>
+      <p class="muted">Java class implementation and methods screenshots:</p>
+      <img src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Patient%20Method.png?raw=true" alt="Patient Method">
+      <img src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Patient%20Method%202.png?raw=true" alt="Patient Method 2">
+      <img src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Patient%20Method%203.png?raw=true" alt="Patient Method 3">
+      <img src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/HosRoom%20Method.png?raw=true" alt="Hospital Room Method">
+      <img src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Hospital%20Flow%20Method.png?raw=true" alt="Hospital Flow Method">
+      <img src="https://github.com/Bulanadi-MarkLorence-04/7OOP-Lab-Task/blob/main/MIDTERM%20ACT%201/Image/Methods/Main%20Method.png?raw=true" alt="Main Method">
+    </section>
+
+    <section>
+      <h2>Source Code</h2>
+      <p><a class="btn" href="https://github.com/YourUsername/YourRepo/blob/main/codes/paired-task1.java" target="_blank">View Code on GitHub</a></p>
+    </section>
+
+    <footer>
+      © 2025 Justine Jay Tayting | Object-Oriented Programming Portfolio
+    </footer>
+  </div>
+</body>
+</html>
