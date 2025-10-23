@@ -3,44 +3,152 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Midterm Lab Task 3 - Justine Jay Tayting</title>
+  <title>Midterm Lab Task 1 - Justine Jay Tayting</title>
   <style>
-    :root{--bg:#0f1724;--muted:#9aa4b2;--accent:#6ee7b7;}
-    body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:#e6eef6;margin:0;padding:0;line-height:1.6;}
-    .container{max-width:900px;margin:40px auto;padding:20px;}
-    a{color:var(--accent);text-decoration:none;}
-    a:hover{text-decoration:underline;}
-    header{margin-bottom:24px;}
-    .back{color:var(--muted);font-size:14px;}
-    h1{margin:10px 0 5px;}
-    h2{margin-top:28px;font-size:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:6px;}
-    .muted{color:var(--muted);}
-    img{width:100%;border-radius:10px;margin:10px 0;}
-    .btn{display:inline-block;padding:8px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#67d4f0);color:#042;font-weight:600;text-decoration:none;font-size:14px;}
-    footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;}
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: #0f1724;
+      color: #e6eef6;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    a {
+      color: #6ee7b7;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      margin-bottom: 20px;
+    }
+    .back {
+      color: #9aa4b2;
+      font-size: 14px;
+    }
+    h1 {
+      margin: 10px 0 5px;
+    }
+    h2 {
+      margin-top: 30px;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 6px;
+    }
+    .code {
+      background: #071128;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: Consolas, monospace;
+      overflow-x: auto;
+      color: #9ee2c0;
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    .muted {
+      color: #9aa4b2;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #9aa4b2;
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <a class="back" href="https://tayting05.github.io/7OOP-Lab-Task/index.html">← Back to Portfolio</a>
-      <h1>Midterm Lab Task 3</h1>
-      <p class="muted">Using List Collection Types</p>
+      <h1>Midterm Lab Task 1</h1>
+      <p class="muted">Basic Python Exercises</p>
     </header>
 
     <section>
       <h2>Description</h2>
-      <p>This activity explores Python list operations including adding, searching, deleting, and sorting list elements through a menu-driven program.</p>
+      <p>This activity focused on solving basic Python programming problems using variables, print statements, and formatted outputs. It helped me understand how to structure and organize my code properly.</p>
     </section>
 
     <section>
       <h2>Problem #1</h2>
-      <p class="muted">Create a menu-based program to manage items using Python lists.</p>
-      <p><a class="btn" href="https://github.com/YourUsername/YourRepo/blob/main/midterm-lab3-problem1.py" target="_blank">View Code on GitHub</a></p>
-      <img src="images/midterm-lab3-problem1.png" alt="Sample output for Problem 1">
+      <div class="code">
+full_name = "John Doe"<br>
+_email = "john.doe@example.com"<br>
+university_name = "ABC University"<br><br>
+print("Problem 1")<br>
+print("Database Record")<br>
+print("Name: \\t\\t\\t", full_name)<br>
+print("Email: \\t\\t\\t", _email)<br>
+print("University: \\t", university_name)
+      </div>
+      <h3>Sample Output</h3>
+      <img src="images/midterm-lab1-problem1.png" alt="Sample output for Problem 1">
     </section>
 
-    <footer>© 2025 Justine Jay Tayting</footer>
+    <section>
+      <h2>Problem #2</h2>
+      <div class="code">
+print("Problem 2")<br>
+message = "Dear John, I hope this email finds you well..."<br>
+ver_num = 1.2<br>
+discount = 10.50<br>
+status = 'A'<br>
+print("%s \\nVersion: %.1f" % (message, ver_num))<br>
+print("Discount: %.2f" % (discount), end='%\\n')<br>
+print("Status: %c" % (status))
+      </div>
+      <h3>Sample Output</h3>
+      <img src="images/midterm-lab1-problem2.png" alt="Sample output for Problem 2">
+    </section>
+
+    <section>
+      <h2>Problem #3</h2>
+      <div class="code">
+title = input("Enter the book title: ")<br>
+author = input("Enter the author: ")<br>
+print("You have successfully reserved the book '%s' by %s." % (title, author))
+      </div>
+      <h3>Sample Output</h3>
+      <img src="images/midterm-lab1-problem3.png" alt="Sample output for Problem 3">
+    </section>
+
+    <section>
+      <h2>Problem #4</h2>
+      <div class="code">
+if day == 1:<br>
+ print("Monday")<br>
+elif day == 2:<br>
+ print("Tuesday")<br>
+elif day == 3:<br>
+ print("Wednesday")<br>
+else:<br>
+ print("Invalid input")
+      </div>
+      <h3>Sample Output</h3>
+      <img src="images/midterm-lab1-problem4.png" alt="Sample output for Problem 4">
+    </section>
+
+    <section>
+      <h2>Reflection</h2>
+      <p>This lab improved my understanding of Python syntax, variable naming, and basic logic flow. I learned how to properly format strings and organize outputs clearly for users.</p>
+    </section>
+
+    <section>
+      <h2>Code Link</h2>
+      <p><a href="#" target="_blank">View this activity on GitHub</a></p>
+    </section>
+
+    <footer>
+      © 2025 Justine Jay Tayting | Object-Oriented Programming Portfolio
+    </footer>
   </div>
 </body>
 </html>
