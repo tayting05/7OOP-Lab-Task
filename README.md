@@ -25,44 +25,10 @@ I’m **Justine Jay Tayting**, a 2nd year Computer Science student at City Colle
 
 ---
 
-## Education
- **Senior High School:** Angeles City Senior High School (ABM)  
- 
- **Junior High School:** Francisco G. Nepomuceno Memorial High School 
- 
- **Elementary:** Gueco Balibago Elementary School
-
----
- 
 ## Programming Languages
 - C  
 - Java  
 
----
-
-## Task/Project Links
-
-- **(MIDTERM) Paired Task 1** – Object Oriented Analysis
-  
-  Paired Task 1: [Link Here](https://github.com/tayting05/7OOP-Lab-Task/blob/41330265c450b5c1f52e95582c5a7b85e2118ecb/Task%26Projects/MIDTERM/Paired%20Task%201/README.md)
-
----
-
-## Fun Facts About Me
-- I like eating 
-- I study better with music 🎶 
-- I like improving small projects step by step
-- I like playing games like 5v5 moba, and rpg games  
-
----
-
-## Skills
-- Adaptability 
-- Time Management  
-- Positive thinking   
-- Open Minded 
-- Good Listener   
- 
 ---
 
 ## Contacts
