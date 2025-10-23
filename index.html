@@ -18,18 +18,20 @@
     .container{max-width:960px;margin:32px auto;padding:24px}
     header{display:flex;gap:20px;align-items:center}
     .avatar {
-  width:96px;
-  height:96px;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 6px 18px rgba(0,0,0,0.6);
-  }
-  .avatar img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-  }
+  width: 120px;   
+  height: 120px;
+  border-radius: 12px;  
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
     h1{font-size:24px;margin:0}
     p.lead{margin:6px 0;color:var(--muted)}
     nav{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
