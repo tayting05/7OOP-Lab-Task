@@ -18,6 +18,14 @@
     img{width:100%;border-radius:10px;margin:10px 0;}
     .btn{display:inline-block;padding:8px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#67d4f0);color:#042;font-weight:600;text-decoration:none;font-size:14px;}
     footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;}
+      .code-box {
+      background:#1e293b;
+      padding:15px;
+      border-radius:8px;
+      overflow:auto;
+      max-height:250px;
+      font-family:monospace;
+      margin:10px 0;
   </style>
 </head>
 <body>
@@ -36,7 +44,75 @@
     <section>
       <h2>Problem #1</h2>
       <p class="muted">For this program, you are required to define a class named Car with specific properties, methods, and a constructor. The class should have three properties: color (type: str) to represent the car’s color, price (type: float) to hold the car’s price, and size (type: str) to indicate the size of the car, where 'S' stands for small, 'M' for medium, and 'L' for large. The constructor init(self, color: str, price: float, size: str) initializes these properties, with the size value automatically converted to uppercase using size.upper(). The class should include getter methods (get_color, get_price, and get_size) that return the respective property values. It should also have setter methods (set_color, set_price, and set_size) to modify each property, ensuring that the size value is one of 'S', 'M', or 'L', and any lowercase input is converted to uppercase. Lastly, the str method should return a formatted string showing the car’s details in the format "Car (color) - P(price, formatted to two decimal places) - (size descriptor)", where the size descriptor corresponds to 'small', 'medium', or 'large' based on the size property. For example, a red car priced at 19999.85 with a medium size should display as "Car (red) - P19999.85 - medium", while a blue car priced at 50000.00 with a large size should display as "Car (blue) - P50000.00 - large". Each class must be saved in its own file using camelCase naming conventions, such as carClass.py.</p>
-      <p><a class="btn" href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/refs/heads/main/source-code/finals-lab1-problem1.py" target="_blank">View Code on GitHub</a></p>
+
+<h2>Code</h2>
+      <p>Main.py</p>
+<div class="code-box">
+  <pre><code>
+
+from carClass import Car
+
+def main():
+    car1 = Car("red", 19999.85, "M")
+    car2 = Car("blue", 50000.00, "L")
+    car3 = Car("green", 12345.67, "S")
+
+    print("Action: Invoking the Car class constructor using Car('red', 19999.85, 'M').")
+    print("Output:")
+    print(car1)
+
+    print("\nAction: Invoking the Car class constructor using Car('blue', 50000.00, 'L').")
+    print("Output:")
+    print(car2)
+
+    print("\nAction: Invoking the Car class constructor using Car('green', 12345.67, 'S').")
+    print("Output:")
+    print(car3)
+
+
+if __name__ == "__main__":
+    main()
+  </code></pre>
+</div>
+      <p>carClass.py</p>
+<div class="code-box">
+  <pre><code>
+    def __init__(self, color: str, price: float, size: str):
+        self.__color = color
+        self.__price = price
+        self.__size = size.upper()
+
+    # Set
+    def set_color(self, color: str) -> None:
+        self.__color = color
+
+    def set_price(self, price: float) -> None:
+        self.__price = price
+
+    def set_size(self, size: str) -> None:
+        self.__size = size.upper()
+
+    # Get
+    def get_color(self) -> str:
+        return self.__color
+
+    def get_price(self) -> float:
+        return self.__price
+
+    def get_size(self) -> str:
+        return self.__size
+
+    # String
+    def __str__(self) -> str:
+        size_desc = {
+            'S': 'small',
+            'M': 'medium',
+            'L': 'large'
+        }.get(self.__size, 'unknown')
+
+        return f"Car ({self.__color}) - ₱{self.__price:.2f} - {size_desc}"
+  </code></pre>
+</div>
       <h2>Output</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Final-Labtask1-problem1sample.png?raw=true" alt="Sample output for Problem 1">
     </section>
