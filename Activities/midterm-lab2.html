@@ -18,6 +18,15 @@
     img{width:100%;border-radius:10px;margin:10px 0;}
     .btn{display:inline-block;padding:8px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#67d4f0);color:#042;font-weight:600;text-decoration:none;font-size:14px;}
     footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;}
+    .code-box {
+    background:#1e293b;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+    max-height:250px;
+    font-family:monospace;
+    margin:10px 0;
+    }
   </style>
 </head>
 <body>
@@ -37,7 +46,20 @@
       <h2>Problem #1</h2>
       <p class="muted">Create an n x n Multiplication table using Nested FOR Loop. The user must enter the number of rows
 and columns that will be displayed in the Table.</p>
-      <p><a class="btn" href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/refs/heads/main/source-code/midterm-lab2-problem1.py" target="_blank">View Code on GitHub</a></p>
+       <h2>Code</h2>
+      <div class="code-box">
+        <pre><code>
+          rows = int(input("How many rows: "))
+cols = int(input("How many cols: "))
+
+print("----------------- Multiplication Table ---------------------")
+
+for r in range(1, rows + 1):
+    for c in range(1, cols + 1):
+        print(f"{r * c:5d}", end="")
+    print()
+        </code></pre>
+      </div>
       <h2>Outputs</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask2-problem1sample1.png?raw=true" alt="Sample 1 output for Problem 1">
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask2-problem1sample2.png?raw=true" alt="Sample 2 output for Problem 1">
@@ -46,7 +68,71 @@ and columns that will be displayed in the Table.</p>
     <section>
       <h2>Problem #2</h2>
       <p class="muted">Create a bank program that will allow the user to perform the ff: Use Functions as necessary</p>
-      <p><a class="btn" href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/refs/heads/main/source-code/midterm-lab2-problem2.py" target="_blank">View Code on GitHub</a></p>
+      <h2>Code</h2>
+      <div class="code-box">
+        <pre><code>
+            def show_balance(balance):
+    print("********************************")
+    print(f"Your balance is ${balance:.2f}")
+    print("********************************")
+
+
+def deposit(balance):
+    amount = float(input("Enter an amount to be deposited: "))
+    if amount > 0:
+        balance += amount
+    else:
+        print("Invalid amount!")
+    return balance
+
+
+def withdraw(balance):
+    amount = float(input("Enter an amount to be withdrawn: "))
+    if amount > balance:
+        print("Insufficient funds!!!")
+    elif amount <= 0:
+        print("Invalid amount! Amount must be greater than 0.")
+    else:
+        balance -= amount
+    return balance
+
+
+def main():
+    balance = 0
+    while True:
+        print("********************")
+        print("      XYZ ATM      ")
+        print("********************")
+        print("1. Show Balance")
+        print("2. Deposit")
+        print("3. Withdraw")
+        print("4. Exit")
+        print("********************")
+
+        choice = int(input("Enter your choice (1-4): "))
+
+        if choice == 1:
+            show_balance(balance)
+        elif choice == 2:
+            balance = deposit(balance)
+        elif choice == 3:
+            balance = withdraw(balance)
+        elif choice == 4:
+            print("Exiting Program.")
+            break
+        else:
+            print("*************************************")
+            print("Invalid input! Select a valid option.")
+            print("*************************************")
+
+    print("*************************************")
+    print(" Thank you for using XYZ ATM ")
+    print("*************************************")
+
+
+main()
+        </code></pre>
+      </div>
      <h2>Outputs</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask2-problem2sample1.png?raw=true" alt="Sample 1 output for Problem 2">
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask2-problem2sample2.png?raw=true" alt="Sample 2 output for Problem 2">
