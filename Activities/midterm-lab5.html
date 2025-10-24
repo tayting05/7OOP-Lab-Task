@@ -18,6 +18,14 @@
     img{width:100%;border-radius:10px;margin:10px 0;}
     .btn{display:inline-block;padding:8px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#67d4f0);color:#042;font-weight:600;text-decoration:none;font-size:14px;}
     footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;}
+      .code-box {
+      background:#1e293b;
+      padding:15px;
+      border-radius:8px;
+      overflow:auto;
+      max-height:250px;
+      font-family:monospace;
+      margin:10px 0;
   </style>
 </head>
 <body>
@@ -38,8 +46,66 @@
       <p class="muted">In this problem, you are asked to create a User class that represents a social media user. The class should have the following attributes: first_name, last_name, followers_count, and friends_name (which should be a list). These attributes must be initialized using a constructor. You will also need to include two methods. The first method, introduce_self, should display a message saying “Hi I am {first_name} {last_name}.” The second method, view_full_profile, should print all the user’s information in this format: “Profile Name is Bradd Pitt with 10 followers. Friends are… Juan Pedro Jose.”</p>
       <p class="muted">After creating the User class, you need to make a separate class called TestUser to test if your program works properly. This class should allow user input to be passed as parameters when creating the object. Finally, create at least two object instances to test the User class and verify that both methods function as expected.</p>
       <h2>Output</h2>
-      <p><a class="btn" href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/refs/heads/main/source-code/midterm-lab5-problem1.py" target="_blank">View Code on GitHub</a></p>
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask5-problem1sample.png?raw=true" alt="Sample output for Problem 1">
+<h2>Code</h2>
+<div class="code-box">
+  <pre><code>
+class User:
+    user_count = 0
+
+    def __init__(self, first_name, last_name, followers_count, friends_name):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.followers_count = followers_count
+        self.friends_name = friends_name
+        User.user_count += 1
+
+    def introduce_self(self):
+        print(f"Hi I am {self.first_name} {self.last_name}")
+
+    def view_full_profile(self):
+        print(f"Profile Name: {self.first_name} {self.last_name} with {self.followers_count} followers")
+        print("Your friends are: " + ', '.join(self.friends_name))
+        print()
+
+
+class TestUser:
+    def __init__(self):
+        self.users = []
+
+    def run(self):
+        while True:
+            insert = input("\nInsert a Record? [y|n]: ")
+            if insert.lower() != 'y':
+                break
+
+            first_name = input("\nFirst Name: ")
+            last_name = input("Last Name: ")
+            followers_count = int(input("Followers: "))
+
+            friends = []
+            print("Enter friends one by one. Type 'done' when finished:")
+            while True:
+                friend = input()
+                if friend.lower() == 'done':
+                    break
+                if friend.strip():
+                    friends.append(friend.strip())
+
+            user = User(first_name, last_name, followers_count, friends)
+            self.users.append(user)
+
+        print("\nHere are the Records:")
+        for user in self.users:
+            user.introduce_self()
+            user.view_full_profile()
+
+        print(f"There are currently {User.user_count} members in the Social Media page.")
+
+
+test = TestUser()
+test.run()
+  </code></pre>
+</div>      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask5-problem1sample.png?raw=true" alt="Sample output for Problem 1">
     </section>
 
     <footer> Oct 6, 2025 Justine Jay Tayting</footer>
