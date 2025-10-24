@@ -18,20 +18,19 @@
     .container{max-width:960px;margin:32px auto;padding:24px}
     header{display:flex;gap:20px;align-items:center}
     .avatar {
-  width: 120px;   
-  height: 120px;
-  border-radius: 12px;  
-  overflow: hidden;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  display: block;
-}
-
+      width: 120px;   
+      height: 120px;
+      border-radius: 12px;  
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      display: block;
+    }
     h1{font-size:24px;margin:0}
     p.lead{margin:6px 0;color:var(--muted)}
     nav{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
@@ -47,6 +46,22 @@
     .lab{background:#071026;padding:12px;border-radius:8px}
     .lab a{color:var(--accent);text-decoration:none;font-weight:600}
     footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+
+    .button {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #0f1724;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 6px;
+      transition: background 0.2s;
+    }
+    .button:hover {
+      background: #34d399;
+    }
+
     @media (max-width:900px){main{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -157,6 +172,7 @@
           <a href="https://linkedin.com/in/justine-jay-tayting-406aa6332/" target="_blank">LinkedIn</a>
           <a href="https://open.spotify.com/user/31kvvxirloa4x6wpihjlmkxvhoii?si=a6f9800d5a0b4e75">Spotify</a>
           <a href="mailto:jtayting24-1435@cca.edu.ph">School email</a>
+          <a href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/09c6f0c3a305b6604e814f5e9a3f61a200703dbe/assets/docx/CV-JUSTINETAYTING.pdf" class="button">Download CV</a>
         </div>
       </aside>
     </main>
