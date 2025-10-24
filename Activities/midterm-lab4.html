@@ -18,6 +18,14 @@
     img{width:100%;border-radius:10px;margin:10px 0;}
     .btn{display:inline-block;padding:8px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#67d4f0);color:#042;font-weight:600;text-decoration:none;font-size:14px;}
     footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;}
+      .code-box {
+      background:#1e293b;
+      padding:15px;
+      border-radius:8px;
+      overflow:auto;
+      max-height:250px;
+      font-family:monospace;
+      margin:10px 0;
   </style>
 </head>
 <body>
@@ -46,7 +54,49 @@ orders with the total bill.</p>
 display “Not Available” and input another item</p>
       <p class="muted">6. Create a MENU with 10 items and assign prices in Peso (php) - You may choose what
 items you would like to put in your cart</p>
-      <p><a class="btn" href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/refs/heads/main/source-code/midterm-lab4-problem1.py" target="_blank">View Code on GitHub</a></p>
+<h2>Code</h2>
+<div class="code-box">
+  <pre><code>
+menu = {
+    "Water": 15,
+    "Burger": 50,
+    "Spaghetti": 75,
+    "Soda": 25,
+    "Chicken": 60,
+    "Steak": 85,
+    "Nuggets": 50,
+    "Fries": 40,
+    "Juice": 25,
+    "Pie": 45
+}
+
+cart = []
+prices = []
+
+print("-------- MENU --------")
+for item, price in menu.items():
+    print(f"{item:15}: ₱{price}")
+
+while True:
+    order = input("Enter a food to buy (q to quit): ").strip().title()
+    if order.lower() == "q":
+        break
+    elif order in menu:
+        cart.append(order)
+        prices.append(menu[order])
+        print(f"Added {order} - ₱{menu[order]}")
+    else:
+        print("Not Available")
+
+print("\n----- YOUR ORDERS -----")
+total = 0
+for item, price in zip(cart, prices):
+    print(f"{item:15} ₱{price}")
+    total += price
+
+print(f"\nYour total is: ₱{total}")
+  </code></pre>
+</div>
       <h2>Output</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask4-problem1sample.png?raw=true" alt="Sample output for Problem 1">
     </section>
