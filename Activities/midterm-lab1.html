@@ -70,6 +70,14 @@
       color: var(--muted);
       font-size: 13px;
     }
+     .code-box {
+      background:#1e293b;
+      padding:15px;
+      border-radius:8px;
+      overflow:auto;
+      max-height:250px;
+      font-family:monospace;
+      margin:10px 0;
   </style>
 </head>
 <body>
@@ -89,8 +97,21 @@
     <section>
       <h2>Problem #1</h2>
       <p class="muted">Displays basic user information using print statements.</p>
-      <p><a class="btn" href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/refs/heads/main/source-code/midterm-lab1-problem1.py" target="_blank">View Code on GitHub</a></p>
-     <h2>Output</h2>
+    <h2>Code</h2>
+    <div class="code-box">
+      <pre><code>
+full_name = "John Doe"
+_email = "john.doe@example.com"
+university_name = "ABC University"
+
+print("Database Record")
+print("/////////////////////////////////////////////////////")
+print("Name: \t\t\t", full_name)
+print("Email: \t\t\t", _email)
+print("University: \t", university_name)
+     </code></pre>
+    </div>   
+      <h2>Output</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem1sample.png?raw=true" alt="Sample output for Problem 1">
     </section>
 
@@ -98,7 +119,29 @@
     <section>
       <h2>Problem #2</h2>
       <p class="muted">Shows how to use variables, strings, and formatted output.</p>
-      <p><a class="btn" href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/refs/heads/main/source-code/midterm-lab1-problem2.py" target="_blank">View Code on GitHub</a></p>
+<h2>Code</h2>
+<div class="code-box">
+  <pre><code>
+message = "Dear John,I hope this email finds you well.\nI wanted to reach out and say hello.\nI hope you are doing well and enjoying your day.\nIt's been a while since we last we spoke, and I wanted to catch up with you.\nLet's plan to meet up soon and have a great time together!"
+subj_name = "Jane"
+sender_name = "Jane"
+ver_num = 1.2
+discount = 10.50
+status = 'A'
+code = "ABCD123"
+loc_name = "City XYZ"
+_age = 30
+company_name = "ABC Corporation"
+web_name = "www.example.com"
+phone_num = "+1 123-456-7890"
+job_title = "Software Engineer"
+depart_name = "Engineering"
+
+print("%s \nSubject: %s\nVersion: %.1f" % (message,sender_name,ver_num,))
+print("Discount: %.2f" %(discount), end='%\n')
+print("Status: %c\nCode: %s\nLocation: %s\nAge: %d\nCompany: %s\nWebsite:%s\nPhone: %s\nJob Tittle: %s\nDepartment: %s"%(status,code,loc_name,_age,company_name,web_name,phone_num,job_title,depart_name))
+  </code></pre>
+</div>
       <h2>Output</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem2sample.png?raw=true" alt="Sample output for Problem 2">
     </section>
@@ -107,7 +150,25 @@
     <section>
       <h2>Problem #3</h2>
       <p class="muted">Demonstrates input collection and string formatting for displaying book information.</p>
-      <p><a class="btn" href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/refs/heads/main/source-code/midterm-lab1-problem3.py" target="_blank">View Code on GitHub</a></p>
+<h2>Code</h2>
+<div class="code-box">
+  <pre><code>
+title = input("Enter the book title: ")
+author = input("Enter the author: ")
+publication = input("Enter the year of publication: ")
+genre_name = input("Enter the genre: ")
+lib_name = input("Enter the library: ")
+memID = input("Enter your memberID: ")
+return_date = input("Enter the return date: ")
+
+print("You have successfully reserved the book '%s' by %s." % (title, author))
+print("Year of Publication: %d" % (publication))
+print("Genre: %s" % (genre_name))
+print("Library: %s" % (lib_name))
+print("Member ID: %d" % (memID))
+print("Return Date: %s" % (return_date))
+  </code></pre>
+</div>
       <h2>Outputs</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem3sample1.png?raw=true" alt="Sample 1 output for Problem 3">
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem3sample2.png?raw=true" alt="Sample 2 output for Problem 3">
@@ -117,8 +178,30 @@
     <section>
       <h2>Problem #4</h2>
       <p class="muted">Shows conditional statements to display the day of the week based on user input.</p>
-      <p><a class="btn" href="https://raw.githubusercontent.com/tayting05/7OOP-Lab-Task/refs/heads/main/source-code/midterm-lab1-problem4.py" target="_blank">View Code on GitHub</a></p>
-     <h2>Outputs</h2>
+<h2>Code</h2>
+<div class="code-box">
+  <pre><code>
+day = int(input("Enter Day number (1-7): "))
+
+if day == 1:
+    print("Monday")
+elif day == 2:
+    print("Tuesday")
+elif day == 3:
+    print("Wednesday")
+elif day == 4:
+    print("Thursday")
+elif day == 5:
+    print("Friday")
+elif day == 6:
+    print("Saturday")
+elif day == 7:
+    print("Sunday")
+else:
+    print("Invalid input")
+  </code></pre>
+</div>
+      <h2>Outputs</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem4sample1.png?raw=true" alt="Sample 1 output for Problem 4">
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem4sample2.png?raw=true" alt="Sample 2 output for Problem 4">
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem4sample3.png?raw=true" alt="Sample 3 output for Problem 4">
