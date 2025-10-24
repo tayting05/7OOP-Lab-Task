@@ -1,6 +1,5 @@
-<img width="1100" height="150" alt="image" src="images/Justine_Banner.png" />
 
-<img align="right" src="images/Justine.profile.png" width="170" height="160">
+<img align="right" src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Justine-Profile.png?raw=true" width="170" height="160">
 
 # Hi, I'm Justine
 ### 2nd Year ComSci Student | CCA
