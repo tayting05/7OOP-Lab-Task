@@ -1,4 +1,6 @@
 
+
+
 <img align="right" src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Justine-Profile.png?raw=true" width="170" height="160">
 
 # Hi, I'm Justine
@@ -10,8 +12,7 @@ and handling data based on what I learned in class. It reflects my progress and 
 
 ## About Me
 
-I’m **Justine Jay Tayting**, a 2nd year Computer Science student at City College of Angeles.  
-- 🌱 Currently learning **Python**   
+I’m **Justine Jay Tayting**, a 2nd year Computer Science student at City College of Angeles.     
 - 🎯 Goal: improve my coding skills and build meaningful projects  
 - 🎧 Hobbies: music, coding, and gaming 
 
@@ -21,12 +22,6 @@ I’m **Justine Jay Tayting**, a 2nd year Computer Science student at City Colle
 - Software development  
 - Data structures and algorithms  
 - Networking basics  
-
----
-
-## Programming Languages
-- C  
-- Java  
 
 ---
 
