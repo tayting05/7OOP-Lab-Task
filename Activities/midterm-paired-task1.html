@@ -78,6 +78,14 @@
       color: var(--muted);
       font-size: 13px;
     }
+      .code-box {
+      background:#1e293b;
+      padding:15px;
+      border-radius:8px;
+      overflow:auto;
+      max-height:250px;
+      font-family:monospace;
+      margin:10px 0;
   </style>
 </head>
 <body>
@@ -152,13 +160,184 @@
 
     <section>
       <h2>Step 4. Implement the Classes</h2>
-      <p class="muted">Java class implementation and methods screenshots:</p>
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm%20-%20Task%201%20%20Patient%20Method.png?raw=true">
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm%20-%20Task%201%20%20Patient%20Method.png?raw=true">
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm%20-%20Task%201%20Patient%20Method%203.png?raw=true">
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm%20-%20Task%201%20HosRoom%20Method.png?raw=true">
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm%20-%20Task%201%20Hospital%20Flow%20Method.png?raw=true">
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm%20-%20Task%201%20Main%20Method.png?raw=true">
+      <p class="muted">Java class implementation and methods codes:</p>
+      <p>Patient Class</p>
+<div class="code-box">
+  <pre><code>
+class Patient {
+    int patientID;
+    String name;
+    Date dateOfBirth;
+    String patientType;
+
+    public Patient(int patientID, String name, Date dateOfBirth, String patientType) {
+        this.patientID = patientID;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.patientType = patientType;
+    }
+
+    public void updatePatient(String name, Date dob) {
+        this.name = name;
+        this.dateOfBirth = dob;
+    }
+
+    public String getPatientInfo() {
+        return "ID: " + patientID + ", Name: " + name + ", DOB: " + dateOfBirth + ", Type: " + patientType;
+    }
+}
+  </code></pre>
+</div>
+      <p>HosRoom Class</p>
+      <div class="code-box">
+        <pre><code>
+class HosRoom {
+    int roomNumber;
+    String roomType;
+    double roomFee;
+    boolean occupied = false;
+
+    public HosRoom(int roomNumber, String roomType, double roomFee) {
+        this.roomNumber = roomNumber;
+        this.roomType = roomType;
+        this.roomFee = roomFee;
+    }
+
+    public void assignPatient(Patient p) {
+        occupied = true;
+        System.out.println("Room " + roomNumber + " assigned to patient " + p.name);
+    }
+
+    public void releasePatient() {
+        occupied = false;
+        System.out.println("Room " + roomNumber + " is now available.");
+    }
+
+    public boolean isOccupied() {
+        return occupied;
+    }
+}
+        </code></pre>
+      </div>
+            <p>ResPatient Class (Extends Patient)</p>
+      <div class="code-box">
+        <pre><code>
+class ResPatient extends Patient {
+    int roomPatient;
+
+    public ResPatient(int patientID, String name, Date dob, int roomPatient) {
+        super(patientID, name, dob, "Resident");
+        this.roomPatient = roomPatient;
+    }
+
+    public void assignRoom(HosRoom room) {
+        this.roomPatient = room.roomNumber;
+        room.assignPatient(this);
+    }
+}
+        </code></pre>
+      </div>
+            <p>OutPatient Class (Extends Patient)</p>
+      <div class="code-box">
+        <pre><code>
+class OutPatient extends Patient {
+    public OutPatient(int patientID, String name, Date dob) {
+        super(patientID, name, dob, "Outpatient");
+    }
+
+    public void discharge() {
+        System.out.println(name + " has been discharged.");
+    }
+}
+        </code></pre>
+      </div>
+            <p>HosFlow Class</p>
+      <div class="code-box">
+        <pre><code>
+class HosFlow {
+    List<Patient> patients = new ArrayList<>();
+    List<HosRoom> rooms = new ArrayList<>();
+
+    public void addPatient(Patient p) {
+        patients.add(p);
+    }
+
+    public void updatePatient(int id, String newName, Date newDob) {
+        for (Patient p : patients) {
+            if (p.patientID == id) {
+                p.updatePatient(newName, newDob);
+                System.out.println("Updated patient " + id);
+                return;
+            }
+        }
+        System.out.println("Patient not found.");
+    }
+
+    public Patient searchPatient(int id) {
+        for (Patient p : patients) {
+            if (p.patientID == id) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public void viewPatient(int id) {
+        Patient p = searchPatient(id);
+        if (p != null) {
+            System.out.println(p.getPatientInfo());
+        } else {
+            System.out.println("Patient not found.");
+        }
+    }
+
+    public void viewRstat(int roomNumber) {
+        for (HosRoom r : rooms) {
+            if (r.roomNumber == roomNumber) {
+                System.out.println("Room " + r.roomNumber + " occupied: " + r.isOccupied());
+                return;
+            }
+        }
+        System.out.println("Room not found.");
+    }
+}
+        </code></pre>
+      </div>
+            <p>Main</p>
+      <div class="code-box">
+        <pre><code>
+public static void main(String[] args) {
+    HosFlow system = new HosFlow();
+
+    HosRoom room101 = new HosRoom(101, "Private", 1500.0);
+    HosRoom room102 = new HosRoom(102, "Semi-Private", 1000.0);
+    
+    system.rooms.add(room101);
+    system.rooms.add(room102);
+
+    ResPatient rp = new ResPatient(1, "Juan Dela Cruz", new Date(), 0);
+    OutPatient op = new OutPatient(2, "Maria Clara", new Date());
+    
+    system.addPatient(rp);
+    system.addPatient(op);
+
+    rp.assignRoom(room101); 
+
+    system.viewPatient(1);
+    system.viewPatient(2);
+
+    system.viewRstat(101);
+    system.viewRstat(102);
+
+    op.discharge();
+
+    room101.releasePatient();
+    
+    system.viewRstat(101);
+}
+        </code></pre>
+      </div>
+      
     </section>
 
 
