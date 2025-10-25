@@ -161,6 +161,24 @@ footer {
   background: #34d399;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.chip a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.chip a:hover {
+  color: var(--accent);
+}
+
+.chip {
+  cursor: pointer;
+}
+
 @media (max-width: 900px) {
   main {
     grid-template-columns: 1fr;
