@@ -1,32 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const chips = document.querySelectorAll('.chip a');
-
-  function updateActiveChip() {
-    chips.forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href.startsWith('#')) return;
-      const target = document.querySelector(href);
-      const rect = target.getBoundingClientRect();
-      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-        link.parentElement.classList.add('active');
-      } else {
-        link.parentElement.classList.remove('active');
-      }
-    });
-  }
-
-  chips.forEach(link => {
+  document.querySelectorAll('.chip a').forEach(link => {
     link.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
       if (href.startsWith('#')) {
         e.preventDefault();
-        const target = document.querySelector(href);
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        updateActiveChip();
+        const targetId = href.substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
+          this.parentElement.classList.add('active');
+          setTimeout(() => this.parentElement.classList.remove('active'), 2000);
+        }
       }
     });
   });
-
-  window.addEventListener('scroll', updateActiveChip);
-  updateActiveChip();
 });
+
