@@ -1,7 +1,9 @@
-<img align="center" src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Justine-Profile.png?raw=true" width="150" height="150" style="margin-left: 20px; margin-bottom: 10px;">
 
-# Hi, I'm Justine 👋  
+# Hi, I'm Justine 👋 
+<img align="right" src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Justine-Profile.png?raw=true" width="140" height="140" style="border-radius: 50%; margin-left: 20px; margin-bottom: 10px; object-fit: cover;">
+
 ### 2nd Year Computer Science Student | CCA
+
 
 Welcome to my **OOP Portfolio**!  
 This repo contains my 7OOP lab exercises that show what I’ve learned in object-oriented programming and how I apply it to real coding projects.
