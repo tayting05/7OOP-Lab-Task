@@ -231,3 +231,13 @@ html {
     font-size: 14px;
   }
 }
+
+.glow {
+  animation: glowEffect 1s ease-in-out 2;
+}
+
+@keyframes glowEffect {
+  0% { box-shadow: 0 0 0px var(--accent); }
+  50% { box-shadow: 0 0 15px var(--accent); }
+  100% { box-shadow: 0 0 0px var(--accent); }
+}
