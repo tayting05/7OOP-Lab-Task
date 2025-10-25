@@ -1,4 +1,4 @@
-<img align="right" src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Justine-Profile.png?raw=true" width="160" height="150">
+<img align="right" src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Justine-Profile.png?raw=true" width="140" height="140" style="border-radius: 50%; margin-left: 20px; margin-bottom: 10px; object-fit: cover;">
 
 # Hi, I'm Justine 👋  
 ### 2nd Year Computer Science Student | CCA
