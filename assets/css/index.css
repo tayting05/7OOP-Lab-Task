@@ -63,12 +63,37 @@ nav {
   flex-wrap: wrap;
 }
 
+.chip-container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+}
+
 .chip {
-  background: var(--glass);
   padding: 8px 12px;
-  border-radius: 10px;
+  background: var(--card);
+  border-radius: 16px;
+  cursor: pointer;
   color: var(--muted);
   font-size: 13px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.chip:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.chip a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.chip a:hover {
+  color: var(--bg);
 }
 
 main {
@@ -163,20 +188,6 @@ footer {
 
 html {
   scroll-behavior: smooth;
-}
-
-.chip a {
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.chip a:hover {
-  color: var(--accent);
-}
-
-.chip {
-  cursor: pointer;
 }
 
 @media (max-width: 900px) {
