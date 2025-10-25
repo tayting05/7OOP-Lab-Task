@@ -16,7 +16,15 @@ This repo contains my 7OOP lab exercises that show what I’ve learned in object
 ---
 
 ## 📫 Connect  
-[Facebook](https://facebook.com/tayting05) • [Instagram](https://instagram.com/tayting05/) • [LinkedIn](https://linkedin.com/in/justine-jay-tayting-406aa6332/) • [Email](mailto:jtayting24-1435@cca.edu.ph)
+Facebook: [tayting05](https://facebook.com/tayting05) 
+
+Instagram: [tayting05](https://instagram.com/tayting05/) 
+
+LinkedIn: [justine-jay-tayting](https://linkedin.com/in/justine-jay-tayting-406aa6332/) 
+
+Email: [tayting05@gmail.com](mailto:tayting05@gmail.com)
+
+School Email: [jtayting24-1435@cca.edu.ph](mailto:jtayting24-1435@cca.edu.ph)
 
 ---
 
