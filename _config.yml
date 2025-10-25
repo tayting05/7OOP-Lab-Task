@@ -1,7 +1,0 @@
-title: 7OOP Portfolio
-description: About ME
-logo: images/Justine.profile.png
-
-remote_theme: pages-themes/midnight@v0.2.0
-plugins:
-- jekyll-remote-theme
