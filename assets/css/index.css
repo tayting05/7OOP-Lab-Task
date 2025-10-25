@@ -28,6 +28,7 @@ header {
   display: flex;
   gap: 20px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .avatar {
@@ -36,7 +37,7 @@ header {
   border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .avatar img {
@@ -51,7 +52,7 @@ h1 {
   margin: 0;
 }
 
-p.lead {
+p.lead, .muted {
   margin: 6px 0;
   color: var(--muted);
 }
@@ -69,6 +70,7 @@ nav {
   margin: 0;
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .chip {
@@ -81,9 +83,10 @@ nav {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.chip:hover {
+.chip:hover, .chip:focus-visible {
   background: var(--accent);
   color: var(--bg);
+  outline: none;
 }
 
 .chip a {
@@ -113,6 +116,10 @@ main {
 .section-title {
   font-weight: 700;
   margin-bottom: 8px;
+}
+
+.section-margin {
+  margin-top: 16px;
 }
 
 .about p {
@@ -161,13 +168,7 @@ main {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
-}
-
-footer {
-  margin-top: 28px;
-  color: var(--muted);
-  font-size: 13px;
-  text-align: center;
+  word-break: break-word;
 }
 
 .button {
@@ -186,6 +187,25 @@ footer {
   background: #34d399;
 }
 
+footer {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.footer-small {
+  margin-top: 8px;
+}
+
+.spacer {
+  height: 18px;
+}
+
+.spacer-small {
+  height: 12px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -193,5 +213,21 @@ html {
 @media (max-width: 900px) {
   main {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 12px;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  p.lead, .muted {
+    font-size: 14px;
   }
 }
