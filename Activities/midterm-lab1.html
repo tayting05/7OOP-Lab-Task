@@ -4,81 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Midterm Lab Task 1 - Justine Jay Tayting</title>
-  <style>
-    :root {
-      --bg: #0f1724;
-      --muted: #9aa4b2;
-      --accent: #6ee7b7;
-    }
-    body {
-      font-family: Inter, system-ui, sans-serif;
-      background: var(--bg);
-      color: #e6eef6;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    header {
-      margin-bottom: 24px;
-    }
-    .back {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    h1 {
-      margin: 10px 0 5px;
-    }
-    h2 {
-      margin-top: 28px;
-      font-size: 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding-bottom: 6px;
-    }
-    .muted {
-      color: var(--muted);
-    }
-    img {
-      width: 100%;
-      border-radius: 10px;
-      margin: 10px 0;
-    }
-    .btn {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 8px;
-      background: linear-gradient(90deg, var(--accent), #67d4f0);
-      color: #042;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-     .code-box {
-      background:#1e293b;
-      padding:15px;
-      border-radius:8px;
-      overflow:auto;
-      max-height:250px;
-      font-family:monospace;
-      margin:10px 0;
-  </style>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <div class="container">
@@ -97,9 +23,9 @@
     <section>
       <h2>Problem #1</h2>
       <p class="muted">Displays basic user information using print statements.</p>
-    <h2>Code</h2>
-    <div class="code-box">
-      <pre><code>
+      <h2>Code</h2>
+      <div class="code-box">
+        <pre><code>
 full_name = "John Doe"
 _email = "john.doe@example.com"
 university_name = "ABC University"
@@ -108,8 +34,8 @@ print("Database Record")
 print("Name: \t\t\t", full_name)
 print("Email: \t\t\t", _email)
 print("University: \t", university_name)
-     </code></pre>
-    </div>   
+        </code></pre>
+      </div>   
       <h2>Output</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem1sample.png?raw=true" alt="Sample output for Problem 1">
     </section>
@@ -118,9 +44,9 @@ print("University: \t", university_name)
     <section>
       <h2>Problem #2</h2>
       <p class="muted">Shows how to use variables, strings, and formatted output.</p>
-<h2>Code</h2>
-<div class="code-box">
-  <pre><code>
+      <h2>Code</h2>
+      <div class="code-box">
+        <pre><code>
 message = "Dear John,I hope this email finds you well.\nI wanted to reach out and say hello.\nI hope you are doing well and enjoying your day.\nIt's been a while since we last we spoke, and I wanted to catch up with you.\nLet's plan to meet up soon and have a great time together!"
 subj_name = "Jane"
 sender_name = "Jane"
@@ -139,8 +65,8 @@ depart_name = "Engineering"
 print("%s \nSubject: %s\nVersion: %.1f" % (message,sender_name,ver_num,))
 print("Discount: %.2f" %(discount), end='%\n')
 print("Status: %c\nCode: %s\nLocation: %s\nAge: %d\nCompany: %s\nWebsite:%s\nPhone: %s\nJob Tittle: %s\nDepartment: %s"%(status,code,loc_name,_age,company_name,web_name,phone_num,job_title,depart_name))
-  </code></pre>
-</div>
+        </code></pre>
+      </div>
       <h2>Output</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem2sample.png?raw=true" alt="Sample output for Problem 2">
     </section>
@@ -149,9 +75,9 @@ print("Status: %c\nCode: %s\nLocation: %s\nAge: %d\nCompany: %s\nWebsite:%s\nPho
     <section>
       <h2>Problem #3</h2>
       <p class="muted">Demonstrates input collection and string formatting for displaying book information.</p>
-<h2>Code</h2>
-<div class="code-box">
-  <pre><code>
+      <h2>Code</h2>
+      <div class="code-box">
+        <pre><code>
 title = input("Enter the book title: ")
 author = input("Enter the author: ")
 publication = input("Enter the year of publication: ")
@@ -166,8 +92,8 @@ print("Genre: %s" % (genre_name))
 print("Library: %s" % (lib_name))
 print("Member ID: %d" % (memID))
 print("Return Date: %s" % (return_date))
-  </code></pre>
-</div>
+        </code></pre>
+      </div>
       <h2>Outputs</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem3sample1.png?raw=true" alt="Sample 1 output for Problem 3">
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem3sample2.png?raw=true" alt="Sample 2 output for Problem 3">
@@ -177,9 +103,9 @@ print("Return Date: %s" % (return_date))
     <section>
       <h2>Problem #4</h2>
       <p class="muted">Shows conditional statements to display the day of the week based on user input.</p>
-<h2>Code</h2>
-<div class="code-box">
-  <pre><code>
+      <h2>Code</h2>
+      <div class="code-box">
+        <pre><code>
 day = int(input("Enter Day number (1-7): "))
 
 if day == 1:
@@ -198,8 +124,8 @@ elif day == 7:
     print("Sunday")
 else:
     print("Invalid input")
-  </code></pre>
-</div>
+        </code></pre>
+      </div>
       <h2>Outputs</h2>
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem4sample1.png?raw=true" alt="Sample 1 output for Problem 4">
       <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask1-problem4sample2.png?raw=true" alt="Sample 2 output for Problem 4">
