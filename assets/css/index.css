@@ -1,150 +1,234 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Justine Jay Tayting - OOP Portfolio</title>
-  <meta name="description" content="J. TAYTING | OOP Portfolio" />
-  <link rel="stylesheet" href="assets/css/index.css">
-  <link rel="icon" href="assets/images/favicon.png" type="image/png">
-</head>
+:root {
+  --bg: #0f1724;
+  --muted: #9aa4b2;
+  --accent: #6ee7b7;
+}
 
-<body>
-  <div class="container">
-    <header>
-      <div class="avatar">
-        <img src="assets/images/Justine-Profile.png" alt="Portrait of Justine Jay Tayting">
-      </div>
-      <div>
-        <h1>Hi, I'm Justine</h1>
-        <p class="lead">2nd Year CS Student | City College of Angeles</p>
-        <p class="muted">Welcome to my Object-Oriented Programming Portfolio. This portfolio contains my OOP lab exercises, showcasing my skills in organizing, managing, and handling data based on what I learned in class. It reflects my progress and understanding of the subject.</p>
-        <nav>
-          <ul class="chips">
-            <li class="chip"><a href="#about">About</a></li>
-            <li class="chip"><a href="#midterms">Midterm Labs</a></li>
-            <li class="chip"><a href="#contacts">Contacts</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    <main>
-      <section>
-        <div class="card about" id="about">
-          <div class="section-title">About Me</div>
-          <p>I’m <strong>Justine Jay Tayting</strong>, a 2nd year Computer Science student at City College of Angeles.</p>
-          <p class="muted">🌱 20 years old and currently lives on Earth.<br>🎯 Goal: improve my coding skills and build meaningful projects<br>🎧 Hobbies: music, coding, and gaming</p>
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: var(--bg);
+  color: #e6eef6;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
 
-          <div class="section-title">Areas of Interest</div>
-          <ul class="muted">
-            <li>Software development</li>
-            <li>Data structures and algorithms</li>
-            <li>Networking basics</li>
-          </ul>
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
 
-          <div class="section-title">Programming Languages</div>
-          <div class="list">
-            <div class="skill">C</div>
-            <div class="skill">Java</div>
-            <div class="skill">Python</div>
-            <div class="skill">HTML</div>
-            <div class="skill">JavaScript</div>
-            <div class="skill">CSS</div>
-          </div>
+header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(15, 23, 36, 0.9);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 10px;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
 
-          <div class="section-title">Fun Facts About Me</div>
-          <ul class="muted">
-            <li>I like eating</li>
-            <li>I study better with music</li>
-            <li>I like improving small tasks step by step</li>
-            <li>I celebrate finishing small tasks like I won in life</li>
-            <li>I like playing games</li>
-          </ul>
-        </div>
+.avatar img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  object-fit: cover;
+}
 
-        <div class="card" id="midterms">
-          <div class="section-title">Midterm Activities</div>
-          <ul class="labs">
-            <li class="lab"><a href="Activities/midterm-paired-task1.html">Paired Task 1 - Object Oriented Analysis</a></li>
-            <li class="lab"><a href="Activities/midterm-lab1.html">Midterm Lab Task 1 - Basic Python Exercises</a></li>
-            <li class="lab"><a href="Activities/midterm-lab2.html">Midterm Lab Task 2 - Using Loops and Functions</a></li>
-            <li class="lab"><a href="Activities/midterm-lab3.html">Midterm Lab Task 3 - Using List Collection Types</a></li>
-            <li class="lab"><a href="Activities/midterm-lab4.html">Midterm Lab Task 4 - Using Dictionaries</a></li>
-            <li class="lab"><a href="Activities/midterm-lab5.html">Midterm Lab Task 5 - Creating Class and Instantiating Objects in Python</a></li>
-          </ul>
-        </div>
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+  color: #fff;
+}
 
-        <div class="card">
-          <div class="section-title">Finals Activities</div>
-          <ul class="labs">
-            <li class="lab"><a href="Activities/finals-lab1.html">Finals Lab Task 1 - Encapsulation</a></li>
-            <li class="lab"><a href="assets/images/coming-soon.png" target="_blank">More activities coming soon...</a></li>
-          </ul>
-        </div>
-      </section>
+header .lead {
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
 
-      <aside>
-        <div class="card">
-          <div class="section-title">Education</div>
-          <div class="muted">
-            <strong>College</strong><br>City College of Angeles (BSCS)<br><br>
-            <strong>Senior High School</strong><br>Angeles City Senior High School (ABM)<br><br>
-            <strong>Junior High School</strong><br>Francisco G. Nepomuceno Memorial High School<br><br>
-            <strong>Elementary</strong><br>Gueco Balibago Elementary School
-          </div>
-        </div>
+header .muted {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 600px;
+}
 
-        <div class="card">
-          <div class="section-title">Skills</div>
-          <div class="list">
-            <div class="skill">Adaptability</div>
-            <div class="skill">Time Management</div>
-            <div class="skill">Open Minded</div>
-            <div class="skill">Good Listener</div>
-            <div class="skill">Resiliency</div>
-            <div class="skill">Stewardship</div>
-          </div>
-        </div>
+nav {
+  margin-top: 10px;
+}
 
-        <div class="card contact" id="contacts">
-          <div class="section-title">Contacts</div>
-          <a href="https://instagram.com/tayting05/" target="_blank">Instagram</a>
-          <a href="https://tiktok.com/@tayting05/" target="_blank">Tiktok</a>
-          <a href="https://linkedin.com/in/justine-jay-tayting-406aa6332/" target="_blank">LinkedIn</a>
-          <a href="https://open.spotify.com/user/31kvvxirloa4x6wpihjlmkxvhoii?si=a6f9800d5a0b4e75" target="_blank">Spotify</a>
-          <a href="mailto:jtayting24-1435@cca.edu.ph">Email</a>
-          <a href="assets/docx/CV-JUSTINETAYTING.pdf" download class="button">Download CV</a>
-        </div>
-      </aside>
-    </main>
+.chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-top: 8px;
+}
 
-    <footer>
-      Built by Justine Jay Tayting • Object-Oriented Programming Portfolio
-      <div><small>THANK YOU FOR VISITING!</small></div>
-      <a href="https://github.com/tayting05/7OOP-Lab-Task/">View in GitHub</a>
-      <script>document.write(` <small>© ${new Date().getFullYear()}</small>`)</script>
-    </footer>
-  </div>
+.chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
 
-  <button id="scrollTopBtn" title="Back to Top">↑</button>
+.chip a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
 
-  <script>
-    const scrollBtn = document.getElementById("scrollTopBtn");
+.chip:hover {
+  background: rgba(110, 231, 183, 0.15);
+  transform: translateY(-2px);
+}
 
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        scrollBtn.style.display = "block";
-        scrollBtn.classList.add("visible");
-      } else {
-        scrollBtn.style.display = "none";
-        scrollBtn.classList.remove("visible");
-      }
-    });
+.chip:hover a {
+  color: var(--accent);
+}
 
-    scrollBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  </script>
-</body>
-</html>
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 18px rgba(110, 231, 183, 0.2);
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.labs,
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+}
+
+.lab a {
+  color: #e6eef6;
+  text-decoration: none;
+  background: rgba(110, 231, 183, 0.08);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.lab a:hover {
+  background: var(--accent);
+  color: #0f1724;
+  transform: translateX(4px);
+}
+
+.skill {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: inline-block;
+  color: var(--muted);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.skill:hover {
+  background: var(--accent);
+  color: #0f1724;
+}
+
+.contact a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.contact a:hover {
+  color: var(--accent);
+}
+
+.contact .button {
+  display: inline-block;
+  background: var(--accent);
+  color: #0f1724;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.contact .button:hover {
+  background: #34d399;
+}
+
+footer {
+  text-align: center;
+  margin-top: 32px;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 6px;
+  display: inline-block;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .chips {
+    justify-content: center;
+  }
+}
