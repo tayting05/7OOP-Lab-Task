@@ -22,10 +22,9 @@ Instagram: [tayting05](https://instagram.com/tayting05/)
 
 LinkedIn: [justine-jay-tayting](https://linkedin.com/in/justine-jay-tayting-406aa6332/) 
 
-Email: [tayting05@gmail.com](mailto:tayting05@gmail.com)
+Email: [tayting05@gmail.com](https://mail.google.com/mail/u/0/?fs=1&to=tayting05@gmail.com&tf=cm)
 
-School Email: [jtayting24-1435@cca.edu.ph](mailto:jtayting24-1435@cca.edu.ph)
-
+School Email: [jtayting24-1435@cca.edu.ph](https://mail.google.com/mail/u/0/?fs=1&to=jtayting24-1435@cca.edu.ph&tf=cm)
 ---
 
 <p align="center">✨ Thanks for visiting! 🚀</p>
