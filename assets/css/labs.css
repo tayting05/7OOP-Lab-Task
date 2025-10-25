@@ -3,7 +3,7 @@
   --muted: #9aa4b2;
   --accent: #6ee7b7;
 }
-
+ 
 body {
   font-family: Inter, system-ui, sans-serif;
   background: var(--bg);
