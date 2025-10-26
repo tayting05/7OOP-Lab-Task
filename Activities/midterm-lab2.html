@@ -15,15 +15,17 @@
       <p class="muted">Using Loops and Functions</p>
     </header>
 
-
     <section>
       <h2>Problem #1</h2>
-      <p class="muted">Create an n x n Multiplication table using Nested FOR Loop. The user must enter the number of rows
-and columns that will be displayed in the Table.</p>
-       <h2>Code</h2>
+      <p class="muted">
+        Create an n x n Multiplication table using Nested FOR Loop. The user must enter the number of rows
+        and columns that will be displayed in the Table.
+      </p>
+
+      <h2>Code</h2>
       <div class="code-box">
         <pre><code>
-          rows = int(input("How many rows: "))
+rows = int(input("How many rows: "))
 cols = int(input("How many cols: "))
 
 print("----------------- Multiplication Table ---------------------")
@@ -34,22 +36,53 @@ for r in range(1, rows + 1):
     print()
         </code></pre>
       </div>
+
       <h2>Outputs</h2>
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask2-problem1sample1.png?raw=true" alt="Sample 1 output for Problem 1">
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask2-problem1sample2.png?raw=true" alt="Sample 2 output for Problem 1">
+      <div class="code-box">
+        <pre><code>
+How many rows: 10
+How many cols: 10
+----------------- Multiplication Table ---------------------
+    1    2    3    4    5    6    7    8    9   10
+    2    4    6    8   10   12   14   16   18   20
+    3    6    9   12   15   18   21   24   27   30
+    4    8   12   16   20   24   28   32   36   40
+    5   10   15   20   25   30   35   40   45   50
+    6   12   18   24   30   36   42   48   54   60
+    7   14   21   28   35   42   49   56   63   70
+    8   16   24   32   40   48   56   64   72   80
+    9   18   27   36   45   54   63   72   81   90
+   10   20   30   40   50   60   70   80   90  100
+        </code></pre>
+      </div>
+
+      <div class="code-box">
+        <pre><code>
+How many rows: 5
+How many cols: 5
+----------------- Multiplication Table ---------------------
+    1    2    3    4    5
+    2    4    6    8   10
+    3    6    9   12   15
+    4    8   12   16   20
+    5   10   15   20   25
+        </code></pre>
+      </div>
     </section>
 
     <section>
       <h2>Problem #2</h2>
-      <p class="muted">Create a bank program that will allow the user to perform the ff: Use Functions as necessary</p>
+      <p class="muted">
+        Create a bank program that will allow the user to perform the following: Use Functions as necessary.
+      </p>
+
       <h2>Code</h2>
       <div class="code-box">
         <pre><code>
-            def show_balance(balance):
+def show_balance(balance):
     print("********************************")
     print(f"Your balance is ${balance:.2f}")
     print("********************************")
-
 
 def deposit(balance):
     amount = float(input("Enter an amount to be deposited: "))
@@ -58,7 +91,6 @@ def deposit(balance):
     else:
         print("Invalid amount!")
     return balance
-
 
 def withdraw(balance):
     amount = float(input("Enter an amount to be withdrawn: "))
@@ -69,7 +101,6 @@ def withdraw(balance):
     else:
         balance -= amount
     return balance
-
 
 def main():
     balance = 0
@@ -103,16 +134,87 @@ def main():
     print(" Thank you for using XYZ ATM ")
     print("*************************************")
 
-
 main()
         </code></pre>
       </div>
-     <h2>Outputs</h2>
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask2-problem2sample1.png?raw=true" alt="Sample 1 output for Problem 2">
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask2-problem2sample2.png?raw=true" alt="Sample 2 output for Problem 2">
+
+      <h2>Outputs</h2>
+      <div class="code-box">
+        <pre><code>
+********************
+      XYZ ATM      
+********************
+1. Show Balance
+2. Deposit
+3. Withdraw
+4. Exit
+********************
+Enter your choice (1-4): 1
+********************************
+Your balance is $0.00
+********************************
+********************
+      XYZ ATM      
+********************
+1. Show Balance
+2. Deposit
+3. Withdraw
+4. Exit
+********************
+Enter your choice (1-4): 2
+Enter an amount to be deposited: 1000
+********************
+      XYZ ATM      
+********************
+1. Show Balance
+2. Deposit
+3. Withdraw
+4. Exit
+********************
+Enter your choice (1-4): 1
+********************************
+Your balance is $1000.00
+********************************
+********************
+      XYZ ATM      
+********************
+1. Show Balance
+2. Deposit
+3. Withdraw
+4. Exit
+********************
+Enter your choice (1-4): 3
+Enter an amount to be withdrawn: 350
+********************
+      XYZ ATM      
+********************
+1. Show Balance
+2. Deposit
+3. Withdraw
+4. Exit
+********************
+Enter your choice (1-4): 1
+********************************
+Your balance is $650.00
+********************************
+********************
+      XYZ ATM      
+********************
+1. Show Balance
+2. Deposit
+3. Withdraw
+4. Exit
+********************
+Enter your choice (1-4): 4
+Exiting Program.
+*************************************
+ Thank you for using XYZ ATM 
+*************************************
+        </code></pre>
+      </div>
     </section>
 
-    <footer> Sep 6, 2025 Justine Jay Tayting</footer>
+    <footer>Sep 6, 2025 Justine Jay Tayting</footer>
   </div>
 </body>
 </html>
