@@ -3,20 +3,67 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coming Soon - Justine Jay Tayting</title>
-  <link rel="stylesheet" href="../assets/css/labs.css">
+  <title>Coming Soon - OOP</title>
   <link rel="icon" href="../assets/images/favicon.png" type="image/png">
   <style>
+    :root {
+      --bg: #0f1724;
+      --muted: #9aa4b2;
+      --accent: #6ee7b7;
+    }
     body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: #e6eef6;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      margin: 0;
     }
     .center-image img {
       max-width: 80%;
       border-radius: 10px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1 {
+      margin: 10px 0 5px;
+    }
+    h2 {
+      margin-top: 28px;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 6px;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, var(--accent), #67d4f0);
+      color: #042;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 20px;
     }
   </style>
 </head>
