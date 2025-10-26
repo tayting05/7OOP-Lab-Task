@@ -15,30 +15,27 @@
       <p class="muted">Using List Collection Types</p>
     </header>
 
-
     <section>
       <h2>Problem #1</h2>
-      <p class="muted">Using List Collection type. Create a program that will allow the user to perform
-        the following functions: (add, update, search, delete, display, and sort) items in a list:</p>
-      
-      <p class="muted"> Note: You are free to decide what data you will be storing in the list and name the list based
-        on the type of data you wish to store.</p>
-      <h2>Requirements: </h2>
+      <p class="muted">
+        Using List Collection type. Create a program that will allow the user to perform
+        the following functions: (add, update, search, delete, display, and sort) items in a list:
+      </p>
+      <p class="muted">
+        Note: You are free to decide what data you will be storing in the list and name the list based
+        on the type of data you wish to store.
+      </p>
+      <h2>Requirements:</h2>
       <p class="muted">1. The user can add items in the list until the user presses x to stop</p>
-      <p class="muted">2. The user should be able to perform search if an item exists – Display if found or not
-found and count the number of instance in the list.</p>
-      <p class="muted">3. The user should also be given the option to remove an item in the list – Display the
-Message “Item found and deleted” once deletion is performed – else display “item
-not found-deletion unsuccessful”</p>
-      <p class="muted">4. The user may also opt to view items in the list and display items sorted in
-Ascending order</p>
+      <p class="muted">2. The user should be able to perform search if an item exists – Display if found or not found and count the number of instance in the list.</p>
+      <p class="muted">3. The user should also be given the option to remove an item in the list – Display the message “Item found and deleted” once deletion is performed – else display “Item not found – deletion unsuccessful”</p>
+      <p class="muted">4. The user may also opt to view items in the list and display items sorted in ascending order</p>
       <p class="muted">5. The user may opt to exit the program by typing 0</p>
-      <p class="muted">Note: you are free to design the interface of the program, base on the Menu options
-shown.</p>
+      <p class="muted">Note: you are free to design the interface of the program, based on the menu options shown.</p>
 
-<h2>Code</h2>
-<div class="code-box">
-  <pre><code>
+      <h2>Code</h2>
+      <div class="code-box">
+        <pre><code>
 items = []
 choice = -1
 
@@ -106,15 +103,82 @@ while choice != 0:
 
     else:
         print("Invalid option. Please try again.")
-  </code></pre>
-</div>
+        </code></pre>
+      </div>
+
       <h2>Outputs</h2>
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask3-problem1sample1.png?raw=true" alt="Sample 1 output for Problem 1">
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask3-problem1sample2.png?raw=true" alt="Sample 2 output for Problem 1">
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask3-problem1sample3.png?raw=true" alt="Sample 3 output for Problem 1">
+      <div class="code-box">
+        <pre><code>
+=====| Welcome |=====
+=====| My Listing |=====
+
+==========[ MENU OPTIONS ]==========
+1 - Add Items
+2 - Search for an Item
+3 - Remove an Item
+4 - View all Items (Sorted A-Z or Z-A)
+0 - Exit Program
+====================================
+Pick one [0 to quit]: 1
+Enter item (type 'x' to stop): 1
+Enter item (type 'x' to stop): 2
+Enter item (type 'x' to stop): 3
+Enter item (type 'x' to stop): 4
+Enter item (type 'x' to stop): 5
+Enter item (type 'x' to stop): cca
+Enter item (type 'x' to stop): cca
+Enter item (type 'x' to stop): lolo
+Enter item (type 'x' to stop): lola
+Enter item (type 'x' to stop): eksena
+Enter item (type 'x' to stop): x
+Items added successfully.
+
+==========[ MENU OPTIONS ]==========
+1 - Add Items
+2 - Search for an Item
+3 - Remove an Item
+4 - View all Items (Sorted A-Z or Z-A)
+0 - Exit Program
+====================================
+Pick one [0 to quit]: 3
+Enter item to remove: cca
+Item found and deleted.
+
+==========[ MENU OPTIONS ]==========
+1 - Add Items
+2 - Search for an Item
+3 - Remove an Item
+4 - View all Items (Sorted A-Z or Z-A)
+0 - Exit Program
+====================================
+Pick one [0 to quit]: 4
+Sort A-Z or Z-A? (Enter 'A' or 'Z'): A
+
+Items in the list:
+1. 1
+2. 2
+3. 3
+4. 4
+5. 5
+6. cca
+7. eksena
+8. lola
+9. lola
+
+==========[ MENU OPTIONS ]==========
+1 - Add Items
+2 - Search for an Item
+3 - Remove an Item
+4 - View all Items (Sorted A-Z or Z-A)
+0 - Exit Program
+====================================
+Pick one [0 to quit]: 0
+Exiting program... Goodbye!
+        </code></pre>
+      </div>  
     </section>
 
-    <footer> Sep 13, 2025 Justine Jay Tayting</footer>
+    <footer>Sep 13, 2025 Justine Jay Tayting</footer>
   </div>
 </body>
 </html>
