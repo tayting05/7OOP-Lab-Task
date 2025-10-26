@@ -15,23 +15,20 @@
       <p class="muted">Using Dictionary Collections</p>
     </header>
 
-
     <section>
       <h2>Problem #1</h2>
       <p class="muted">Create the following UI for menu items: then allow the user to input orders</p>
-      <p class="muted">The user will continue to input orders until q is typed to quit. Then display the summary of
-orders with the total bill.</p>
+      <p class="muted">The user will continue to input orders until q is typed to quit. Then display the summary of orders with the total bill.</p>
       <p class="muted">1. Use a dictionary(for the menu) and List(for the orders in the cart)</p>
       <p class="muted">2. Users may input the same item in the cart.</p>
-      <p class="muted">3. Follw the exact format and whitespace for the menu</p>
+      <p class="muted">3. Follow the exact format and whitespace for the menu</p>
       <p class="muted">4. User input should be case insensitive</p>
-      <p class="muted">5. If the user inputted an item not in the Menu – it will not include it in the cart and
-display “Not Available” and input another item</p>
-      <p class="muted">6. Create a MENU with 10 items and assign prices in Peso (php) - You may choose what
-items you would like to put in your cart</p>
-<h2>Code</h2>
-<div class="code-box">
-  <pre><code>
+      <p class="muted">5. If the user inputted an item not in the Menu – it will not include it in the cart and display “Not Available” and input another item</p>
+      <p class="muted">6. Create a MENU with 10 items and assign prices in Peso (php) - You may choose what items you would like to put in your cart</p>
+
+      <h2>Code</h2>
+      <div class="code-box">
+        <pre><code>
 menu = {
     "Water": 15,
     "Burger": 50,
@@ -70,13 +67,39 @@ for item, price in zip(cart, prices):
     total += price
 
 print(f"\nYour total is: ₱{total}")
-  </code></pre>
-</div>
+        </code></pre>
+      </div>
+
       <h2>Output</h2>
-      <img src="https://github.com/tayting05/7OOP-Lab-Task/blob/main/assets/images/Midterm-Labtask4-problem1sample.png?raw=true" alt="Sample output for Problem 1">
+      <div class="code-box">
+        <pre><code>
+-------- MENU --------
+Water          : ₱15
+Burger         : ₱50
+Spaghetti      : ₱75
+Soda           : ₱25
+Chicken        : ₱60
+Steak          : ₱85
+Nuggets        : ₱50
+Fries          : ₱40
+Juice          : ₱25
+Pie            : ₱45
+Enter a food to buy (q to quit): water
+Added Water - ₱15
+Enter a food to buy (q to quit): soda
+Added Soda - ₱25
+Enter a food to buy (q to quit): q
+
+----- YOUR ORDERS -----
+Water           ₱15
+Soda            ₱25
+
+Your total is: ₱40
+        </code></pre>
+      </div>
     </section>
 
-    <footer> Sep 20, 2025 Justine Jay Tayting</footer>
+    <footer>Sep 20, 2025 Justine Jay Tayting</footer>
   </div>
 </body>
 </html>
