@@ -11,86 +11,118 @@
   <div class="container">
     <header>
       <a class="back" href="https://tayting05.github.io/7OOP-Lab-Task/index.html">← Back to Portfolio</a>
-      <h1>Finals Lab Task 1</h1>
-      <p class="muted">Encapsulation</p>
+      <h1>Finals Lab Task 2</h1>
+      <p class="muted">Inheritance</p>
     </header>
 
     <section>
       <h2>Problem #1</h2>
       <p class="muted">
-        For this program, you are required to define a class named Car with specific properties, methods, and a constructor. The class should have three properties: color (type: str) to represent the car’s color, price (type: float) to hold the car’s price, and size (type: str) to indicate the size of the car, where 'S' stands for small, 'M' for medium, and 'L' for large. The constructor init(self, color: str, price: float, size: str) initializes these properties, with the size value automatically converted to uppercase using size.upper(). The class should include getter methods (get_color, get_price, and get_size) that return the respective property values. It should also have setter methods (set_color, set_price, and set_size) to modify each property, ensuring that the size value is one of 'S', 'M', or 'L', and any lowercase input is converted to uppercase. Lastly, the str method should return a formatted string showing the car’s details in the format "Car (color) - P(price, formatted to two decimal places) - (size descriptor)", where the size descriptor corresponds to 'small', 'medium', or 'large' based on the size property. For example, a red car priced at 19999.85 with a medium size should display as "Car (red) - P19999.85 - medium", while a blue car priced at 50000.00 with a large size should display as "Car (blue) - P50000.00 - large". Each class must be saved in its own file using camelCase naming conventions, such as carClass.py.
+       Problem School Performance
+Note: You are to create 4 separate python files for this task:
+• performer.py(base class)
+• singer.py(sub class)
+• dancer.py(sub class)
+• test_class.py - following the required test cases
       </p>
 
       <h2>Code</h2>
-      <p>Main.py</p>
+      <p>performer.py</p>
       <div class="code-box">
         <pre><code>
-from carClass import Car
-
-def main():
-    car1 = Car("red", 19999.85, "M")
-    car2 = Car("blue", 50000.00, "L")
-    car3 = Car("green", 12345.67, "S")
-
-    print("Action: Invoking the Car class constructor using Car('red', 19999.85, 'M').")
-    print("Output:")
-    print(car1)
-
-    print("\nAction: Invoking the Car class constructor using Car('blue', 50000.00, 'L').")
-    print("Output:")
-    print(car2)
-
-    print("\nAction: Invoking the Car class constructor using Car('green', 12345.67, 'S').")
-    print("Output:")
-    print(car3)
+class Performer:
+   def __init__(self, name: str, age: int):
+       self._name = name
+       self._age = age
 
 
+   def get_name(self) -> str:
+       return self._name
+
+
+   def get_age(self) -> int:
+       return self._age
+
+
+   def display_info(self) -> None:
+       print(f"{self.get_name()}  {self.get_age()} ")
+        </code></pre>
+      </div>
+
+      <p>singer.py</p>
+      <div class="code-box">
+        <pre><code>
+from performer import Performer
+
+
+class Singer(Performer):
+   def __init__(self, name: str, age: int, vocal_range: str):
+       super().__init__(name, age)
+       self._vocal_range = vocal_range
+
+
+   def get_vocal_range(self) -> str:
+       return self._vocal_range
+
+
+   def sing(self) -> None:
+       print(f"{self.get_name()} is singing with a {self.get_vocal_range()} range.")
+
+      </code></pre>
+      </div>
+
+      <p>dancer.py</p>
+      <div class="code-box">
+        <pre><code>
+from performer import Performer
+
+
+class Dancer(Performer):
+   def __init__(self, name: str, age: int, dance_style: str):
+       super().__init__(name, age)
+       self._dance_style = dance_style
+
+
+   def get_dance_style(self) -> str:
+       return self._dance_style
+
+
+   def dance(self) -> None:
+       print(f"{self.get_name()} is performing {self.get_dance_style()} dance.")
+
+        </code></pre>
+      </div>
+      
+      <p>test_class.py</p>
+      <div class="code-box">
+        <pre><code>
+from performer import Performer
+from singer import Singer
+from dancer import Dancer
+
+
+def test_performer():
+   performer = Performer("John", 25)
+   performer.display_info()
+
+
+def test_dancer():
+   dancer = Dancer("Emily", 28, "Ballet")
+   print(f"{dancer.get_name()} {dancer.get_age()} {dancer.get_dance_style()}")
+   dancer.dance()
+
+
+def test_singer():
+   singer = Singer("Linda", 35, "Soprano")
+   print(f"{singer.get_name()} {singer.get_age()} {singer.get_vocal_range()}")  
+   singer.sing()
 if __name__ == "__main__":
-    main()
+   test_performer()
+   test_dancer()
+   test_singer()
         </code></pre>
       </div>
-
-      <p>carClass.py</p>
-      <div class="code-box">
-        <pre><code>
-class Car:
-    def __init__(self, color: str, price: float, size: str):
-        self.__color = color
-        self.__price = price
-        self.__size = size.upper()
-
-    # Set
-    def set_color(self, color: str) -> None:
-        self.__color = color
-
-    def set_price(self, price: float) -> None:
-        self.__price = price
-
-    def set_size(self, size: str) -> None:
-        self.__size = size.upper()
-
-    # Get
-    def get_color(self) -> str:
-        return self.__color
-
-    def get_price(self) -> float:
-        return self.__price
-
-    def get_size(self) -> str:
-        return self.__size
-
-    # String
-    def __str__(self) -> str:
-        size_desc = {
-            'S': 'small',
-            'M': 'medium',
-            'L': 'large'
-        }.get(self.__size, 'unknown')
-
-        return f"Car ({self.__color}) - ₱{self.__price:.2f} - {size_desc}"
-        </code></pre>
-      </div>
-
+      
       <h2>Output</h2>
       <div class="code-box">
         <pre><code>
