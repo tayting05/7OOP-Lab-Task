@@ -16,7 +16,6 @@ This repo contains my 7OOP lab tasks that show what I’ve learned in object-ori
 ---
 
 ## 📫 Connect  
-Facebook: [tayting05](https://facebook.com/tayting05) 
 
 Instagram: [tayting05](https://instagram.com/tayting05/) 
 
