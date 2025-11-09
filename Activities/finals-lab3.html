@@ -11,108 +11,134 @@
   <div class="container">
     <header>
       <a class="back" href="https://tayting05.github.io/7OOP-Lab-Task/index.html">← Back to Portfolio</a>
-      <h1>Finals Lab Task 1</h1>
-      <p class="muted">Encapsulation</p>
+      <h1>Finals Lab Task 3</h1>
+      <p class="muted">Polymorphism</p>
     </header>
 
     <section>
       <h2>Problem #1</h2>
       <p class="muted">
-        For this program, you are required to define a class named Car with specific properties, methods, and a constructor. The class should have three properties: color (type: str) to represent the car’s color, price (type: float) to hold the car’s price, and size (type: str) to indicate the size of the car, where 'S' stands for small, 'M' for medium, and 'L' for large. The constructor init(self, color: str, price: float, size: str) initializes these properties, with the size value automatically converted to uppercase using size.upper(). The class should include getter methods (get_color, get_price, and get_size) that return the respective property values. It should also have setter methods (set_color, set_price, and set_size) to modify each property, ensuring that the size value is one of 'S', 'M', or 'L', and any lowercase input is converted to uppercase. Lastly, the str method should return a formatted string showing the car’s details in the format "Car (color) - P(price, formatted to two decimal places) - (size descriptor)", where the size descriptor corresponds to 'small', 'medium', or 'large' based on the size property. For example, a red car priced at 19999.85 with a medium size should display as "Car (red) - P19999.85 - medium", while a blue car priced at 50000.00 with a large size should display as "Car (blue) - P50000.00 - large". Each class must be saved in its own file using camelCase naming conventions, such as carClass.py.
+The "Chirp and Tweet" problem is a simple programming exercise designed to illustrate polymorphism in object-oriented design. It requires creating an abstract base class called Bird with an unimplemented make_sound() method , and two subclasses, Sparrow and Parrot, which inherit from Bird and override the make_sound() method to print "Chirp Chirp" and "Tweet Tweet," respectively . The demonstration culminates with a BirdCage class containing a make_bird_sounds() method; this method accepts a list of Bird objects and, by iterating over them and calling make_sound(), demonstrates how the same method call yields different, appropriate results based on the object's true type (Sparrow or Parrot), which is the core principle of polymorphism.
       </p>
 
       <h2>Code</h2>
-      <p>Main.py</p>
+      <p>main.py</p>
       <div class="code-box">
         <pre><code>
-from carClass import Car
+from sparrow import Sparrow
+from parrot import Parrot
+from birdCage import BirdCage
 
 def main():
-    car1 = Car("red", 19999.85, "M")
-    car2 = Car("blue", 50000.00, "L")
-    car3 = Car("green", 12345.67, "S")
+    birds = []
+    num = int(input("How many birds do you want to add? "))
 
-    print("Action: Invoking the Car class constructor using Car('red', 19999.85, 'M').")
-    print("Output:")
-    print(car1)
+    for i in range(num):
+        print(f"\nBird {i+1}:")
+        btype = input("Enter bird type (sparrow/parrot): ").strip().lower()
+        color = input("Enter color: ")
+        age = int(input("Enter age: "))
 
-    print("\nAction: Invoking the Car class constructor using Car('blue', 50000.00, 'L').")
-    print("Output:")
-    print(car2)
+        if btype == "sparrow":
+            birds.append(Sparrow(color, age))
+        elif btype == "parrot":
+            birds.append(Parrot(color, age))
+        else:
+            print("Unknown bird type, skipping this one.")
 
-    print("\nAction: Invoking the Car class constructor using Car('green', 12345.67, 'S').")
-    print("Output:")
-    print(car3)
-
+    if birds:
+        cage = BirdCage()
+        print("\nBird sounds:")
+        cage.make_bird_sounds(birds)
+    else:
+        print("No birds to display.")
 
 if __name__ == "__main__":
     main()
         </code></pre>
       </div>
 
-      <p>carClass.py</p>
+      <p>sparrow.py</p>
       <div class="code-box">
         <pre><code>
-class Car:
-    def __init__(self, color: str, price: float, size: str):
-        self.__color = color
-        self.__price = price
-        self.__size = size.upper()
+from bird import Bird
 
-    # Set
-    def set_color(self, color: str) -> None:
-        self.__color = color
+class Sparrow(Bird):
+    def make_sound(self):
+        print("Chirp Chirp!")
+        </code></pre>
+      </div>
 
-    def set_price(self, price: float) -> None:
-        self.__price = price
+      <p>parrot.py</p>
+      <div class="code-box">
+        <pre><code>
+from bird import Bird
 
-    def set_size(self, size: str) -> None:
-        self.__size = size.upper()
+class Parrot(Bird):
+    def make_sound(self):
+        print("Tweet Tweet!")
+        </code></pre>
+      </div>
 
-    # Get
-    def get_color(self) -> str:
-        return self.__color
+      <p>bairdCage.py</p>
+      <div class="code-box">
+        <pre><code>
+class BirdCage:
+    def make_bird_sounds(self, birds: list):
+        for bird in birds:
+            bird.make_sound()
+        </code></pre>
+      </div>
 
-    def get_price(self) -> float:
-        return self.__price
+      <p>bird.py</p>
+      <div class="code-box">
+        <pre><code>
+from abc import ABC, abstractmethod
 
-    def get_size(self) -> str:
-        return self.__size
+class Bird(ABC):
+    def __init__(self, color, age, sound=""):
+        self.color = color
+        self.age = age
+        self.sound = sound
 
-    # String
-    def __str__(self) -> str:
-        size_desc = {
-            'S': 'small',
-            'M': 'medium',
-            'L': 'large'
-        }.get(self.__size, 'unknown')
-
-        return f"Car ({self.__color}) - ₱{self.__price:.2f} - {size_desc}"
+    @abstractmethod
+    def make_sound(self):
+        print("Generic Bird Sound")
         </code></pre>
       </div>
 
       <h2>Output</h2>
       <div class="code-box">
         <pre><code>
-Action: Invoking the Car class constructor using Car('red', 19999.85, 'M').
-Output:
-Car (red) - ₱19999.85 - medium
+How many birds do you want to add: 3
 
-Action: Invoking the Car class constructor using Car('blue', 50000.00, 'L').
-Output:
-Car (blue) - ₱50000.00 - large
+Bird 1:
+Enter bird type (sparrow/parrot): sparrow
+Enter color: brown
+Enter age: 2
 
-Action: Invoking the Car class constructor using Car('green', 12345.67, 'S').
-Output:
-Car (green) - ₱12345.67 - small
+Bird 2:
+Enter bird type (sparrow/parrot): parrot
+Enter color: green
+Enter age: 3
+
+Bird 3:
+Enter bird type (sparrow/parrot): sparrow
+Enter color: gray
+Enter age: 1
+
+Bird sounds:
+Chirp Chirp!
+Tweet Tweet!
+Chirp Chirp!
         </code></pre>
       </div>
-      <a href="https://github.com/tayting05/7OOP-Lab-Task/blob/main/Activities/act-pdf/TAYTING-FINALLAB1.pdf" target="_blank" class="btn">
+      <a href="https://github.com/tayting05/7OOP-Lab-Task/blob/main/Activities/act-pdf/TAYTING-FINALLAB3.pdf" target="_blank" class="btn">
   View PDF Here
 </a>
     </section>
 
-    <footer>Oct 18, 2025 Justine Jay Tayting</footer>
+    <footer>Nov 10, 2025 Justine Jay Tayting</footer>
   </div>
 </body>
 </html>
