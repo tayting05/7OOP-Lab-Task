@@ -6,7 +6,7 @@
 
 
 Welcome to my **OOP Portfolio**!  
-This repo contains my 7OOP lab exercises that show what I’ve learned in object-oriented programming and how I apply it to real coding projects.
+This repo contains my 7OOP lab tasks that show what I’ve learned in object-oriented programming and how I apply it to real coding projects.
 
 ---
 
