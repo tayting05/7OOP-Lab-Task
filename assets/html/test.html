@@ -59,5 +59,55 @@
     <div class="profile-container">
         <div class="profile-blob"></div>
     </div>
+    <script>
+        // Enhanced typing animation
+        const typingText = document.getElementById('typing-text');
+        const texts = [
+            'Computer Science Student',
+            'AI abuser',
+            'prefer cats over dogs',
+            'vanilla > chocolate',
+            'i love nestle sterilize milk',
+            'i like to automate everything',
+            '136 WPM typist',
+            'Computer Science Student'
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = textIndex === 0 ? 100 : 80; // Faster for the glazing part
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                if (textIndex === 0) {
+                    // Longer pause after "Computer Science Student"
+                    typingSpeed = 1500;
+                } else {
+                    typingSpeed = 2000; // Pause before deleting glazing texts
+                }
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typingSpeed = 500;
+            }
+            
+            setTimeout(type, typingSpeed);
+        }
+
+    </script>
 </body>
 </html>
