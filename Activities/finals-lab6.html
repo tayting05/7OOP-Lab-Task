@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finals Lab Task 1 - Justine Jay Tayting</title>
+  <link rel="stylesheet" href="../assets/css/labs.css">
+  <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="back" href="https://tayting05.github.io/7OOP-Lab-Task/index.html">← Back to Portfolio</a>
+      <h1>Finals Lab Task 3</h1>
+      <p class="muted">Polymorphism</p>
+    </header>
+
+    <section>
+      <h2>Problem #1</h2>
+      <p class="muted">
+The "Chirp and Tweet" problem is a simple programming exercise designed to illustrate polymorphism in object-oriented design. It requires creating an abstract base class called Bird with an unimplemented make_sound() method , and two subclasses, Sparrow and Parrot, which inherit from Bird and override the make_sound() method to print "Chirp Chirp" and "Tweet Tweet," respectively . The demonstration culminates with a BirdCage class containing a make_bird_sounds() method; this method accepts a list of Bird objects and, by iterating over them and calling make_sound(), demonstrates how the same method call yields different, appropriate results based on the object's true type (Sparrow or Parrot), which is the core principle of polymorphism.
+      </p>
+
+      <h2>Code</h2>
+      <p>main.py</p>
+      <div class="code-box">
+        <pre><code>
+from sparrow import Sparrow
+from parrot import Parrot
+from birdCage import BirdCage
+
+def main():
+    birds = []
+    num = int(input("How many birds do you want to add? "))
+
+    for i in range(num):
+        print(f"\nBird {i+1}:")
+        btype = input("Enter bird type (sparrow/parrot): ").strip().lower()
+        color = input("Enter color: ")
+        age = int(input("Enter age: "))
+
+        if btype == "sparrow":
+            birds.append(Sparrow(color, age))
+        elif btype == "parrot":
+            birds.append(Parrot(color, age))
+        else:
+            print("Unknown bird type, skipping this one.")
+
+    if birds:
+        cage = BirdCage()
+        print("\nBird sounds:")
+        cage.make_bird_sounds(birds)
+    else:
+        print("No birds to display.")
+
+if __name__ == "__main__":
+    main()
+        </code></pre>
+      </div>
+
+      <p>sparrow.py</p>
+      <div class="code-box">
+        <pre><code>
+from bird import Bird
+
+class Sparrow(Bird):
+    def make_sound(self):
+        print("Chirp Chirp!")
+        </code></pre>
+      </div>
+
+      <p>parrot.py</p>
+      <div class="code-box">
+        <pre><code>
+from bird import Bird
+
+class Parrot(Bird):
+    def make_sound(self):
+        print("Tweet Tweet!")
+        </code></pre>
+      </div>
+
+      <p>bairdCage.py</p>
+      <div class="code-box">
+        <pre><code>
+class BirdCage:
+    def make_bird_sounds(self, birds: list):
+        for bird in birds:
+            bird.make_sound()
+        </code></pre>
+      </div>
+
+      <p>bird.py</p>
+      <div class="code-box">
+        <pre><code>
+from abc import ABC, abstractmethod
+
+class Bird(ABC):
+    def __init__(self, color, age, sound=""):
+        self.color = color
+        self.age = age
+        self.sound = sound
+
+    @abstractmethod
+    def make_sound(self):
+        print("Generic Bird Sound")
+        </code></pre>
+      </div>
+
+      <h2>Output</h2>
+      <div class="code-box">
+        <pre><code>
+How many birds do you want to add: 3
+
+Bird 1:
+Enter bird type (sparrow/parrot): sparrow
+Enter color: brown
+Enter age: 2
+
+Bird 2:
+Enter bird type (sparrow/parrot): parrot
+Enter color: green
+Enter age: 3
+
+Bird 3:
+Enter bird type (sparrow/parrot): sparrow
+Enter color: gray
+Enter age: 1
+
+Bird sounds:
+Chirp Chirp!
+Tweet Tweet!
+Chirp Chirp!
+        </code></pre>
+      </div>
+      <a href="https://github.com/tayting05/7OOP-Lab-Task/blob/main/Activities/act-pdf/TAYTING-FINALLAB3.pdf" target="_blank" class="btn">
+  View PDF Here
+</a>
+    </section>
+
+    <footer>Nov 10, 2025 Justine Jay Tayting</footer>
+  </div>
+</body>
+</html>
