@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Finals Lab Task 1 - Justine Jay Tayting</title>
+  <title>Finals Lab Task 5 - Justine Jay Tayting</title>
   <link rel="stylesheet" href="../assets/css/labs.css">
   <link rel="icon" href="../assets/images/favicon.png" type="image/png">
 </head>
@@ -11,134 +11,255 @@
   <div class="container">
     <header>
       <a class="back" href="https://tayting05.github.io/7OOP-Lab-Task/index.html">← Back to Portfolio</a>
-      <h1>Finals Lab Task 3</h1>
-      <p class="muted">Polymorphism</p>
+      <h1>Finals Lab Task 5</h1>
+      <p class="muted">CRUD CLI using Python and MySQL</p>
     </header>
 
     <section>
       <h2>Problem #1</h2>
       <p class="muted">
-The "Chirp and Tweet" problem is a simple programming exercise designed to illustrate polymorphism in object-oriented design. It requires creating an abstract base class called Bird with an unimplemented make_sound() method , and two subclasses, Sparrow and Parrot, which inherit from Bird and override the make_sound() method to print "Chirp Chirp" and "Tweet Tweet," respectively . The demonstration culminates with a BirdCage class containing a make_bird_sounds() method; this method accepts a list of Bird objects and, by iterating over them and calling make_sound(), demonstrates how the same method call yields different, appropriate results based on the object's true type (Sparrow or Parrot), which is the core principle of polymorphism.
+This task involves creating a Python CLI application for managing a moviesDB database in MySQL, enabling users to perform CRUD operations through a menu-driven interface; the application should allow users to add, view, update, delete, and search movie records, as well as display the total number of movies stored in the database, with a focus on proper error handling, SQL injection prevention through parameterized queries, and secure database connection management, ultimately requiring the submission of the UI menu, sample output, source code, and an exported SQL file for evaluation.
       </p>
 
       <h2>Code</h2>
-      <p>main.py</p>
       <div class="code-box">
         <pre><code>
-from sparrow import Sparrow
-from parrot import Parrot
-from birdCage import BirdCage
+import mysql.connector
 
-def main():
-    birds = []
-    num = int(input("How many birds do you want to add? "))
+conn = mysql.connector.connect(
+    host="localhost",
+    user="tayting05",
+    password="Sql2025##",
+    database="moviesdb"
+)
 
-    for i in range(num):
-        print(f"\nBird {i+1}:")
-        btype = input("Enter bird type (sparrow/parrot): ").strip().lower()
-        color = input("Enter color: ")
-        age = int(input("Enter age: "))
+cursor = conn.cursor()
 
-        if btype == "sparrow":
-            birds.append(Sparrow(color, age))
-        elif btype == "parrot":
-            birds.append(Parrot(color, age))
-        else:
-            print("Unknown bird type, skipping this one.")
+def add_movie():
+    title = input("Enter title: ")
+    actor = input("Enter main actor: ")
+    director = input("Enter director: ")
+    genre = input("Enter genre: ")
+    sales = float(input("Enter gross sales: "))
 
-    if birds:
-        cage = BirdCage()
-        print("\nBird sounds:")
-        cage.make_bird_sounds(birds)
+    rating = input("Enter rating (G, PG, R13, R16, X): ")
+
+    cursor.execute(
+        "INSERT INTO movies (title, actor, director, genre, sales, ratings) "
+        "VALUES (%s, %s, %s, %s, %s, %s)",
+        (title, actor, director, genre, sales, rating)
+    )
+    conn.commit()
+    print("\nMovie added.\n")
+
+
+def view_movies():
+    cursor.execute("SELECT * FROM movies")
+    rows = cursor.fetchall()
+
+    if rows:
+        print("\nMovie List:")
+        for r in rows:
+            print(r)
     else:
-        print("No birds to display.")
+        print("\nNo movies found.")
+    print()
 
-if __name__ == "__main__":
-    main()
-        </code></pre>
-      </div>
 
-      <p>sparrow.py</p>
-      <div class="code-box">
-        <pre><code>
-from bird import Bird
+def update_movie():
+    movie_id = input("Enter movie_id to update: ")
 
-class Sparrow(Bird):
-    def make_sound(self):
-        print("Chirp Chirp!")
-        </code></pre>
-      </div>
+    title = input("Enter new title: ")
+    actor = input("Enter new main actor: ")
+    director = input("Enter new director: ")
+    genre = input("Enter new genre: ")
+    sales = float(input("Enter new gross sales: "))
+    rating = input("Enter new rating: ")
 
-      <p>parrot.py</p>
-      <div class="code-box">
-        <pre><code>
-from bird import Bird
+    cursor.execute(
+        "UPDATE movies SET title=%s, actor=%s, director=%s, genre=%s, "
+        "sales=%s, ratings=%s WHERE movie_id=%s",
+        (title, actor, director, genre, sales, rating, movie_id)
+    )
+    conn.commit()
+    print("\nMovie updated.\n")
 
-class Parrot(Bird):
-    def make_sound(self):
-        print("Tweet Tweet!")
-        </code></pre>
-      </div>
 
-      <p>bairdCage.py</p>
-      <div class="code-box">
-        <pre><code>
-class BirdCage:
-    def make_bird_sounds(self, birds: list):
-        for bird in birds:
-            bird.make_sound()
-        </code></pre>
-      </div>
+def delete_movie():
+    movie_id = input("Enter movie_id to delete: ")
+    cursor.execute("DELETE FROM movies WHERE movie_id=%s", (movie_id,))
+    conn.commit()
+    print("\nMovie deleted.\n")
 
-      <p>bird.py</p>
-      <div class="code-box">
-        <pre><code>
-from abc import ABC, abstractmethod
 
-class Bird(ABC):
-    def __init__(self, color, age, sound=""):
-        self.color = color
-        self.age = age
-        self.sound = sound
+def search_movie():
+    keyword = input("Enter movie title to search: ")
+    cursor.execute("SELECT * FROM movies WHERE title LIKE %s", (f"%{keyword}%",))
 
-    @abstractmethod
-    def make_sound(self):
-        print("Generic Bird Sound")
+    row = cursor.fetchone()
+    if row:
+        print("\nMovie found:")
+        print(row)
+    else:
+        print("\nNo matching movie found.")
+    print()
+
+
+def count_movies():
+    cursor.execute("SELECT COUNT(*) FROM movies")
+    total = cursor.fetchone()[0]
+    print(f"\nTotal movies in database: {total}\n")
+
+
+def menu():
+    while True:
+        print("-----MOVIE DATABASE CLI-----")
+        print("1. Add New Record")
+        print("2. View All Records")
+        print("3. Update a Record")
+        print("4. Delete a Record")
+        print("5. Search a Record")
+        print("6. Display Total Number of Movies")
+        print("7. Exit")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            add_movie()
+        elif choice == "2":
+            view_movies()
+        elif choice == "3":
+            update_movie()
+        elif choice == "4":
+            delete_movie()
+        elif choice == "5":
+            search_movie()
+        elif choice == "6":
+            count_movies()
+        elif choice == "7":
+            print("Closing program.")
+            cursor.close()
+            conn.close()
+            break
+        else:
+            print("Invalid choice.\n")
+
+
+if __name__ == '__main__':
+    menu()
         </code></pre>
       </div>
 
       <h2>Output</h2>
       <div class="code-box">
         <pre><code>
-How many birds do you want to add: 3
+-----MOVIE DATABASE CLI-----
+1. Add New Record
+2. View All Records
+3. Update a Record
+4. Delete a Record
+5. Search a Record
+6. Display Total Number of Movies
+7. Exit
 
-Bird 1:
-Enter bird type (sparrow/parrot): sparrow
-Enter color: brown
-Enter age: 2
+Choose an option: 1
+Enter title: Harry Potter and the Sorcerer's Stone
+Enter main actor: Daniel Radcliffe
+Enter director: Chris Columbus
+Enter genre: Fantasy
+Enter gross sales: 974755571
+Enter rating (6, PG, R13, R16, X): PG
 
-Bird 2:
-Enter bird type (sparrow/parrot): parrot
-Enter color: green
-Enter age: 3
+Movie added.
 
-Bird 3:
-Enter bird type (sparrow/parrot): sparrow
-Enter color: gray
-Enter age: 1
+-----MOVIE DATABASE CLI-----
+1. Add New Record
+2. View All Records
+3. Update a Record
+4. Delete a Record
+5. Search a Record
+6. Display Total Number of Movies
+7. Exit
 
-Bird sounds:
-Chirp Chirp!
-Tweet Tweet!
-Chirp Chirp!
+Choose an option: 2
+
+Movie List:
+(1, Wicked: For Good', 'Cynthia Erivo, Jon H. Chu, "Fantasy Musical', 278812000.0, 'PG')
+(2, "Harry Potter and the Half-Blood Prince", "Daniel Radcliffe', 'David Vates', 'Fantasy', 934483000.0, 'PE']
+(3, "Harry Potter and the Sorcerer's Stone", 'Daniel Radcliffe, Chris Columbus", "Fantasy", 974755868.0, PG)
+(4, Inside Out 2, Any Poehler', 'Kelsey Hann", "Animated Fantasy, 1698860600.0, PG
+(5, Moana 2, "Auli'i Cravalho", "Dave Derrick Jr., Animated Musical', 1059240000.0, PG)
+
+-----MOVIE DATABASE CLI-----
+1. Add New Record
+2. View All Records
+3. Update a Record
+4. Delete a Record
+5. Search a Record
+6. Display Total Number of Movies
+7. Exit
+
+Choose an option: 5
+Enter movie_id to update: 3
+Enter new title: Despicable Me 4
+Enter new main actor: Steve Careli
+Enter new director: Chris Rendud
+Enter new genre: Animated Comedy
+Enter new gross sales: 972021410
+Enter new rating: PG
+
+Movie updated.
+
+-----MOVIE DATABASE CLI-----
+1. Add New Record
+2. View All Records
+3. Update a Record
+4. Delete a Record
+5. Search a Record
+6. Display Total Number of Movies
+7. Exit
+
+Choose an option: 4
+Enter movie_id to delete: 2
+
+Movie deleted.
+
+-----MOVIE DATABASE CLI-----
+1. Add New Record
+2. View All Records
+3. Update a Record
+4. Delete a Record
+5. Search a Record
+6. Display Total Number of Movies
+7. Exit
+
+Choose an option: 5
+Enter movie title to search: Wicked: For Good 
+
+Movie found:
+(1, 'Wicked: For Good', 'Cynthia Erivo', 'Jon M. Chu', 'Fantasy Musical', 270812000.0, 'PG')
+
+-----MOVIE DATABASE CLI-----
+1. Add New Record
+2. View All Records
+3. Update a Record
+4. Delete a Record
+5. Search a Record
+6. Display Total Number of Movies
+7. Exit
+
+Choose an option: 6
+
+Total movies in database: 4
+
         </code></pre>
       </div>
-      <a href="https://github.com/tayting05/7OOP-Lab-Task/blob/main/Activities/act-pdf/TAYTING-FINALLAB3.pdf" target="_blank" class="btn">
+      <a href="https://github.com/tayting05/7OOP-Lab-Task/blob/main/Activities/act-pdf/TAYTING-FINALLAB5.pdf" target="_blank" class="btn">
   View PDF Here
 </a>
     </section>
 
-    <footer>Nov 10, 2025 Justine Jay Tayting</footer>
+    <footer>Nov 29, 2025 Justine Jay Tayting</footer>
   </div>
 </body>
 </html>
