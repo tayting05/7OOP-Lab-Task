@@ -1,122 +1,243 @@
-/* Reset */
+:root {
+  --bg: #0f1724;
+  --card: #0b1220;
+  --muted: #9aa4b2;
+  --accent: #6ee7b7;
+  --glass: rgba(255,255,255,0.03);
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* Background Video */
-.video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -2;
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), #081020);
+  color: #e6eef6;
+  line-height: 1.5;
 }
 
-.video-bg video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.15) contrast(1.2) saturate(1.3);
+.container {
+  max-width: 960px;
+  margin: 32px auto;
+  padding: 24px;
 }
 
-/* Wicked Overlay */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 255, 100, 0.18),
-        rgba(255, 0, 180, 0.18)
-    );
-    backdrop-filter: blur(3px);
-    z-index: -1;
+header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-/* Main Content Layout */
-section {
-    padding: 80px 40px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-/* Neon Wicked Text */
-h1, h2, h3, p {
-    color: #e8ffe8;
-    text-shadow: 0 0 10px rgba(0, 255, 100, 0.45),
-                 0 0 18px rgba(255, 0, 150, 0.35);
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* Dark Focus Box for the intro text */
-.intro-box {
-    background: rgba(0, 0, 0, 0.55);
-    padding: 28px;
-    border-radius: 18px;
-    max-width: 700px;
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(0, 255, 80, 0.35);
-    box-shadow: 0 0 20px rgba(0, 255, 80, 0.25);
+h1 {
+  font-size: 24px;
+  margin: 0;
 }
 
-/* Buttons */
-.btn {
-    padding: 12px 26px;
-    font-size: 18px;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(135deg, #00ff66, #ff00c8);
-    color: #fff;
-    font-weight: bold;
-    transition: 0.3s ease;
+p.lead, .muted {
+  margin: 6px 0;
+  color: var(--muted);
 }
 
-.btn:hover {
-    filter: brightness(1.3);
-    transform: scale(1.05);
-}
-
-/* Navigation Wicked Style */
 nav {
-    width: 100%;
-    padding: 25px 40px;
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    backdrop-filter: blur(8px);
-    background: rgba(0, 0, 0, 0.45);
-    border-bottom: 1px solid rgba(0, 255, 100, 0.25);
-    z-index: 10;
+  margin-top: 18px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-nav a {
-    color: #e1ffe1;
-    margin-left: 25px;
-    font-size: 18px;
-    text-decoration: none;
-    text-shadow: 0 0 8px rgba(0, 255, 100, 0.4);
+.chip-container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-nav a:hover {
-    color: #ffffff;
-    text-shadow: 0 0 12px rgba(255, 0, 180, 0.7);
+.chip {
+  padding: 8px 12px;
+  background: var(--card);
+  border-radius: 16px;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 13px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Footer */
+.chip:hover, .chip:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+  outline: none;
+}
+
+.chip a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.chip a:hover {
+  color: var(--bg);
+}
+
+main {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+}
+
+.section-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.section-margin {
+  margin-top: 16px;
+}
+
+.about p {
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill {
+  background: #071128;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+.contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--glass);
+  color: var(--muted);
+  text-decoration: none;
+  margin: 6px 6px 0 0;
+}
+
+.labs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.lab {
+  background: #071026;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.lab a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.button {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #0f1724;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 6px;
+  transition: background 0.2s;
+}
+
+.button:hover {
+  background: #34d399;
+}
+
 footer {
-    text-align: center;
-    padding: 40px;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    border-top: 1px solid rgba(0, 255, 100, 0.25);
-    backdrop-filter: blur(6px);
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.footer-small {
+  margin-top: 8px;
+}
+
+.spacer {
+  height: 18px;
+}
+
+.spacer-small {
+  height: 12px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 12px;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  p.lead, .muted {
+    font-size: 14px;
+  }
+}
+
+.glow {
+  animation: glowEffect 1s ease-in-out 2;
+}
+
+@keyframes glowEffect {
+  0% { box-shadow: 0 0 0px var(--accent); }
+  50% { box-shadow: 0 0 15px var(--accent); }
+  100% { box-shadow: 0 0 0px var(--accent); }
 }
