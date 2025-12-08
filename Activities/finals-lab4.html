@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Finals Lab Task 1 - Justine Jay Tayting</title>
+  <title>Finals Lab Task 4 - Justine Jay Tayting</title>
   <link rel="stylesheet" href="../assets/css/labs.css">
   <link rel="icon" href="../assets/images/favicon.png" type="image/png">
 </head>
@@ -11,128 +11,128 @@
   <div class="container">
     <header>
       <a class="back" href="https://tayting05.github.io/7OOP-Lab-Task/index.html">← Back to Portfolio</a>
-      <h1>Finals Lab Task 3</h1>
-      <p class="muted">Polymorphism</p>
+      <h1>Finals Lab Task 4</h1>
+      <p class="muted">Python and Tkinter GUI program</p>
     </header>
 
     <section>
       <h2>Problem #1</h2>
       <p class="muted">
-The "Chirp and Tweet" problem is a simple programming exercise designed to illustrate polymorphism in object-oriented design. It requires creating an abstract base class called Bird with an unimplemented make_sound() method , and two subclasses, Sparrow and Parrot, which inherit from Bird and override the make_sound() method to print "Chirp Chirp" and "Tweet Tweet," respectively . The demonstration culminates with a BirdCage class containing a make_bird_sounds() method; this method accepts a list of Bird objects and, by iterating over them and calling make_sound(), demonstrates how the same method call yields different, appropriate results based on the object's true type (Sparrow or Parrot), which is the core principle of polymorphism.
+        This task requires creating an OOP-based Python Tkinter GUI program that computes the total charge of a long-distance call using a ComboBox for selecting destination code (1-4), radio buttons for choosing time of day (Daytime or Nighttime), and a text field for entering call duration in minutes. The computation must follow the given rate table, with different charges for daytime and nighttime calls across American, Asian, African, and European regions. The program must validate numeric input using try-except, and the Compute button should display a transaction summary showing duration, destination, time code, and total charge. A Reset button must clear all inputs and selections, while an About button should show a dialog message saying "Hello I'm (Your name)." The interface should be properly designed and laid out, and grading includes correctness (with points for Reset, About, and Compute) and form design.
       </p>
 
       <h2>Code</h2>
       <p>main.py</p>
       <div class="code-box">
         <pre><code>
-from sparrow import Sparrow
-from parrot import Parrot
-from birdCage import BirdCage
+        import tkinter as tk
+from tkinter import ttk, messagebox
 
-def main():
-    birds = []
-    num = int(input("How many birds do you want to add? "))
+class CallChargeApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Long Distance Call Charge Calculator")
+        self.root.geometry("400x350")
+        self.create_widgets()
+        self.load_rates()
+        self.root.config(bg='gray92')
 
-    for i in range(num):
-        print(f"\nBird {i+1}:")
-        btype = input("Enter bird type (sparrow/parrot): ").strip().lower()
-        color = input("Enter color: ")
-        age = int(input("Enter age: "))
+    def load_rates(self):
+        self.day_rates = {
+            "American Region": 50 / 3,
+            "Asian Region": 30 / 2,
+            "African Region": 40 / 3,
+            "European Region": 35 / 2
+        }
+        self.night_rates = {
+            "American Region": 45 / 3,
+            "Asian Region": 32 / 2,
+            "African Region": 36 / 3,
+            "European Region": 30 / 2
+        }
 
-        if btype == "sparrow":
-            birds.append(Sparrow(color, age))
-        elif btype == "parrot":
-            birds.append(Parrot(color, age))
+    def create_widgets(self):
+        frame = tk.LabelFrame(self.root, text="User Input:", bg='gray80', padx=10, pady=10)
+        frame.pack(fill="x", padx=10, pady=10)
+
+        tk.Label(frame, text="Length of Call (in minutes):", bg='gray80').grid(row=0, column=0, sticky="w")
+        self.duration_entry = tk.Entry(frame, width=20)
+        self.duration_entry.grid(row=0, column=1)
+
+        tk.Label(frame, text="Destination Code:", bg='gray80').grid(row=1, column=0, sticky="w")
+        self.destination_cb = ttk.Combobox(frame, width=18, state="readonly")
+        self.destination_cb['values'] = ("American Region", "Asian Region", "African Region", "European Region")
+        self.destination_cb.grid(row=1, column=1)
+        self.destination_cb.current(0)
+
+        tk.Label(frame, text="Time Code:", bg='gray80').grid(row=2, column=0, sticky="w")
+        self.time_var = tk.StringVar()
+
+        tk.Radiobutton(frame, text="Day Time", variable=self.time_var, value="Day Time", bg='gray80').grid(row=2, column=1, sticky="w")
+        tk.Radiobutton(frame, text="Night Time", variable=self.time_var, value="Night Time", bg='gray80').grid(row=2, column=1, sticky="e")
+
+        output_frame = tk.LabelFrame(self.root, text="TOTAL CHARGE:", padx=10, pady=10)
+        output_frame.pack(fill="both", expand=True, padx=10, pady=5)
+
+        self.output_text = tk.Text(output_frame, height=6, width=60)
+        self.output_text.pack()
+
+        button_frame = tk.Frame(self.root)
+        button_frame.pack(pady=5)
+
+        tk.Button(button_frame, text="Compute Charge", width=15, command=self.compute_charge).grid(row=0, column=0, padx=5)
+        tk.Button(button_frame, text="Reset", width=10, command=self.reset).grid(row=0, column=1, padx=5)
+        tk.Button(button_frame, text="About", width=10, command=self.about).grid(row=0, column=2, padx=5)
+        tk.Button(button_frame, text="Close", width=10, command=self.root.quit).grid(row=0, column=3, padx=5)
+
+    def compute_charge(self):
+        try:
+            duration = int(self.duration_entry.get())
+            if duration <= 0:
+                raise ValueError
+        except ValueError:
+            messagebox.showerror("Error", "Please enter a valid numeric duration.")
+            return
+
+        destination = self.destination_cb.get()
+        time_code = self.time_var.get()
+
+        if time_code == "":
+            messagebox.showerror("Error", "Please select a time code.")
+            return
+
+        if time_code == "Day Time":
+            rate = self.day_rates[destination]
         else:
-            print("Unknown bird type, skipping this one.")
+            rate = self.night_rates[destination]
 
-    if birds:
-        cage = BirdCage()
-        print("\nBird sounds:")
-        cage.make_bird_sounds(birds)
-    else:
-        print("No birds to display.")
+        total_charge = duration * rate
+
+        self.output_text.delete("1.0", tk.END)
+        self.output_text.insert(tk.END, "Transaction Summary...\n\n")
+        self.output_text.insert(tk.END, f"Duration of Call: {duration} minute(s)\n")
+        self.output_text.insert(tk.END, f"Destination Code: {destination}\n")
+        self.output_text.insert(tk.END, f"Time Code: {time_code}\n")
+        self.output_text.insert(tk.END, f"Total Charge is: Php {total_charge:.2f}")
+
+    def reset(self):
+        self.duration_entry.delete(0, tk.END)
+        self.destination_cb.current(0)
+        self.time_var.set("")
+        self.output_text.delete("1.0", tk.END)
+
+    def about(self):
+        messagebox.showinfo("About", "Long Distance Call Charge Calculator helps you to manage and see your time cost of call based on your region. This application is created by Justine Jay Tayting.")
 
 if __name__ == "__main__":
-    main()
+    root = tk.Tk()
+    app = CallChargeApp(root)
+    root.mainloop()
         </code></pre>
       </div>
 
-      <p>sparrow.py</p>
-      <div class="code-box">
-        <pre><code>
-from bird import Bird
+      <h2>View the PDF to see outputs</h2>
 
-class Sparrow(Bird):
-    def make_sound(self):
-        print("Chirp Chirp!")
-        </code></pre>
-      </div>
-
-      <p>parrot.py</p>
-      <div class="code-box">
-        <pre><code>
-from bird import Bird
-
-class Parrot(Bird):
-    def make_sound(self):
-        print("Tweet Tweet!")
-        </code></pre>
-      </div>
-
-      <p>bairdCage.py</p>
-      <div class="code-box">
-        <pre><code>
-class BirdCage:
-    def make_bird_sounds(self, birds: list):
-        for bird in birds:
-            bird.make_sound()
-        </code></pre>
-      </div>
-
-      <p>bird.py</p>
-      <div class="code-box">
-        <pre><code>
-from abc import ABC, abstractmethod
-
-class Bird(ABC):
-    def __init__(self, color, age, sound=""):
-        self.color = color
-        self.age = age
-        self.sound = sound
-
-    @abstractmethod
-    def make_sound(self):
-        print("Generic Bird Sound")
-        </code></pre>
-      </div>
-
-      <h2>Output</h2>
-      <div class="code-box">
-        <pre><code>
-How many birds do you want to add: 3
-
-Bird 1:
-Enter bird type (sparrow/parrot): sparrow
-Enter color: brown
-Enter age: 2
-
-Bird 2:
-Enter bird type (sparrow/parrot): parrot
-Enter color: green
-Enter age: 3
-
-Bird 3:
-Enter bird type (sparrow/parrot): sparrow
-Enter color: gray
-Enter age: 1
-
-Bird sounds:
-Chirp Chirp!
-Tweet Tweet!
-Chirp Chirp!
-        </code></pre>
-      </div>
       <a href="https://github.com/tayting05/7OOP-Lab-Task/blob/main/Activities/act-pdf/TAYTING-FINALLAB3.pdf" target="_blank" class="btn">
   View PDF Here
 </a>
