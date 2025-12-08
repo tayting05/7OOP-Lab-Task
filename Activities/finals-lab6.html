@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Finals Lab Task 1 - Justine Jay Tayting</title>
+  <title>Finals Lab Task 6 - Justine Jay Tayting</title>
   <link rel="stylesheet" href="../assets/css/labs.css">
   <link rel="icon" href="../assets/images/favicon.png" type="image/png">
 </head>
@@ -11,134 +11,407 @@
   <div class="container">
     <header>
       <a class="back" href="https://tayting05.github.io/7OOP-Lab-Task/index.html">← Back to Portfolio</a>
-      <h1>Finals Lab Task 3</h1>
-      <p class="muted">Polymorphism</p>
+      <h1>Finals Lab Task 6</h1>
+      <p class="muted">Mysql and Tkinter HUI</p>
     </header>
 
     <section>
       <h2>Problem #1</h2>
       <p class="muted">
-The "Chirp and Tweet" problem is a simple programming exercise designed to illustrate polymorphism in object-oriented design. It requires creating an abstract base class called Bird with an unimplemented make_sound() method , and two subclasses, Sparrow and Parrot, which inherit from Bird and override the make_sound() method to print "Chirp Chirp" and "Tweet Tweet," respectively . The demonstration culminates with a BirdCage class containing a make_bird_sounds() method; this method accepts a list of Bird objects and, by iterating over them and calling make_sound(), demonstrates how the same method call yields different, appropriate results based on the object's true type (Sparrow or Parrot), which is the core principle of polymorphism.
+This task requires you to perform MySQL CRUD operations in Python using a Tkinter GUI. You must first install all prerequisites, including MySQL-Connector in PyCharm, activate XAMPP services, create a database named carsDB, import the provided SQL file, and set up a user account (cs204/asdf123) with full access. After reviewing the demo GUI design, download the three project files-connectDb.py, main.py, and window.py-and run main.py to ensure all CRUD functions work without errors, taking a screenshot as proof. Finally, you must enhance the GUI by adding one new feature that displays information such as the total number of records, the car model with the highest price, the total number of manual cars, or the total number of automatic cars.
       </p>
 
       <h2>Code</h2>
       <p>main.py</p>
       <div class="code-box">
         <pre><code>
-from sparrow import Sparrow
-from parrot import Parrot
-from birdCage import BirdCage
+import tkinter as tk
+import window
 
 def main():
-    birds = []
-    num = int(input("How many birds do you want to add? "))
-
-    for i in range(num):
-        print(f"\nBird {i+1}:")
-        btype = input("Enter bird type (sparrow/parrot): ").strip().lower()
-        color = input("Enter color: ")
-        age = int(input("Enter age: "))
-
-        if btype == "sparrow":
-            birds.append(Sparrow(color, age))
-        elif btype == "parrot":
-            birds.append(Parrot(color, age))
-        else:
-            print("Unknown bird type, skipping this one.")
-
-    if birds:
-        cage = BirdCage()
-        print("\nBird sounds:")
-        cage.make_bird_sounds(birds)
-    else:
-        print("No birds to display.")
+    root = tk.Tk()
+    crud = window.Window(root)
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
         </code></pre>
       </div>
 
-      <p>sparrow.py</p>
+      <p>connectDB.py</p>
       <div class="code-box">
         <pre><code>
-from bird import Bird
+import mysql.connector
+from tkinter import messagebox
 
-class Sparrow(Bird):
-    def make_sound(self):
-        print("Chirp Chirp!")
+class ConnectDB:
+    def __init__(self, host, user, password, database):
+        self.host = host
+        self.user = user
+        self.password = password
+        self.database = database
+        self.connectDB = None
+
+    def connect(self):
+        try:
+            self.connectDB = mysql.connector.connect(
+                host=self.host,
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                ssl_disabled=True
+            )
+        except mysql.connector.Error as error:
+            print("Error connecting:", error)
+
+    def disconnect(self):
+        if self.connectDB:
+            self.connectDB.close()
+
+    def execute_insert(self, table, id, model, year, color, capacity, power,
+                       type, transmission, price):
+        sql = (
+            f"INSERT INTO {table}(id, model, year, color, engineCapacity, "
+            f"enginePower, engineType, transmission, price) "
+            f"VALUES({id}, '{model}', '{year}', '{color}', {capacity}, "
+            f"{power}, '{type}', '{transmission}', {price})"
+        )
+        self.commit_to_db(sql)
+
+    def execute_delete(self, table, id):
+        sql = f"DELETE FROM {table} WHERE id = {id}"
+        self.commit_to_db(sql)
+
+    def execute_update(self, table, id, model, year, color, capacity, power,
+                       engineType, transmission, price):
+        sql = (
+            f"UPDATE {table} SET model='{model}', year='{year}', color='{color}', "
+            f"engineCapacity={capacity}, enginePower={power}, "
+            f"engineType='{engineType}', transmission='{transmission}', price={price} "
+            f"WHERE id={id}"
+        )
+        self.commit_to_db(sql)
+
+    def commit_to_db(self, sql):
+        cursor = self.connectDB.cursor()
+        try:
+            cursor.execute(sql)
+            self.connectDB.commit()
+            messagebox.showinfo("Success", "Query executed successfully.")
+        except mysql.connector.Error:
+            self.connectDB.rollback()
+            messagebox.showerror("Error", "Duplicate or invalid entry.")
+
+    def execute_select(self, table):
+        cursor = self.connectDB.cursor()
+        cursor.execute(f"SELECT * FROM {table}")
+        return cursor.fetchall()
+
+    def count_all(self, table):
+        cursor = self.connectDB.cursor()
+        cursor.execute(f"SELECT COUNT(*) FROM {table}")
+        return cursor.fetchone()[0]
+
+    def count_automatic(self, table):
+        cursor = self.connectDB.cursor()
+        cursor.execute(f"SELECT COUNT(*) FROM {table} WHERE transmission='A'")
+        return cursor.fetchone()[0]
+
+    def __str__(self):
+        data = self.execute_select("car")
+        aux = ""
+        for row in data:
+            aux += str(row) + "\n"
+        return aux
+
         </code></pre>
       </div>
 
-      <p>parrot.py</p>
+      <p>window.py</p>
       <div class="code-box">
         <pre><code>
-from bird import Bird
+import tkinter as tk
+from tkinter import font
+from tkinter import ttk
+from connectDB import *
+from tkinter import messagebox
 
-class Parrot(Bird):
-    def make_sound(self):
-        print("Tweet Tweet!")
+class Window:
+    cnn = ConnectDB(host="localhost", user="root", password="", database="cars db")
+
+    def __init__(self, root):
+        self.root = root
+        self.settings()
+        self.create_widgets()
+
+    def settings(self):
+        self.root.title("CRUD PYTHON MYSQL - BMWCars")
+        self.root.resizable(0, 0)
+        widthScreen = self.root.winfo_screenwidth()
+        heightScreen = self.root.winfo_screenheight()
+        widthWindow = 1200
+        heightWindow = 600
+        pwidth = int(widthScreen / 2 - widthWindow / 2)
+        pheight = int(heightScreen / 2 - heightWindow / 2)
+        self.root.geometry(f"{widthWindow}x{heightWindow}+{pwidth}+{pheight-30}")
+
+    def create_widgets(self):
+        frame1 = tk.Frame(self.root, width=200, height=600, bg="#f7f5f0")
+        frame1.place(x=0, y=0)
+
+        self.buttonInit = tk.Button(frame1, text="Show All", command=self.fnInit,
+                                    width=24, height=2, bg="#eba607", fg="white")
+        self.buttonInit.place(x=10, y=20)
+
+        self.buttonNew = tk.Button(frame1, text="Add Record", command=self.InsertData,
+                                   width=24, height=2, bg="#eba607", fg="white")
+        self.buttonNew.place(x=10, y=100)
+
+        self.buttonUpdate = tk.Button(frame1, text="Update", command=self.UpdateData,
+                                      width=24, height=2, bg="#eba607", fg="white")
+        self.buttonUpdate.place(x=10, y=150)
+
+        self.buttonDelete = tk.Button(frame1, text="Delete", command=self.DeleteData,
+                                      width=24, height=2, bg="#eba607", fg="white")
+        self.buttonDelete.place(x=10, y=200)
+
+        self.buttonSearch = tk.Button(frame1, text="Search", command=self.SearchData,
+                                      width=24, height=2, bg="#eba607", fg="white")
+        self.buttonSearch.place(x=10, y=250)
+
+        self.buttonReload = tk.Button(frame1, text="Reload", command=self.fnInit,
+                                      width=24, height=2, bg="#eba607", fg="white")
+        self.buttonReload.place(x=10, y=300)
+
+        self.buttonTotalCars = tk.Button(frame1, text="Total Cars",
+                                         command=self.total_cars, width=24, height=2,
+                                         bg="#eba607", fg="white")
+        self.buttonTotalCars.place(x=10, y=350)
+
+        self.buttonAutomaticCars = tk.Button(frame1, text="Automatic Cars",
+                                             command=self.total_automatic, width=24,
+                                             height=2, bg="#eba607", fg="white")
+        self.buttonAutomaticCars.place(x=10, y=400)
+
+        self.frame2 = tk.Frame(self.root, width=300, height=600, bg="#CCCCCC")
+
+        labels = ["ID", "Model:", "Year Make:", "Color:", "Engine Capacity:",
+                  "Engine Motor:", "Engine Type:", "Transmission Type:", "Price"]
+
+        self.entries = []
+        y = 15
+
+        for text in labels:
+            lbl = tk.Label(self.frame2, text=text, background="#CCCCCC")
+            lbl.place(x=10, y=y)
+            entry = tk.Entry(self.frame2, width=30, font=font.Font(size=12))
+            entry.place(x=10, y=y+25)
+            self.entries.append(entry)
+            y += 65
+
+        (self.entry1, self.entry2, self.entry3, self.entry4, self.entry5,
+         self.entry6, self.entry7, self.entry8, self.entry9) = self.entries
+
+        self.buttonSave = tk.Button(frame1, text="Save", command=self.save,
+                                    width=24, height=2, bg="#006400", fg="black")
+
+        self.buttonCancel = tk.Button(frame1, text="Cancel", command=self.cancel,
+                                      width=24, height=2, bg="#8B0000", fg="black")
+
+        style = ttk.Style()
+        style.configure("Custom.Treeview", background="whitesmoke", foreground="black")
+
+        self.grid = ttk.Treeview(self.root,
+                                 columns=("col1", "col2", "col3", "col4",
+                                          "col5", "col6", "col7", "col8"),
+                                 style="Custom.Treeview")
+
+        self.grid.column("#0", width=50, anchor=tk.CENTER)
+
+        for i in range(1, 9):
+            self.grid.column(f"col{i}", width=100, anchor=tk.CENTER)
+
+        headers = ["Model", "Year", "Color", "EngineCap", "EnginePower",
+                   "EngineType", "Transmission", "Price"]
+
+        for i, text in enumerate(headers, start=1):
+            self.grid.heading(f"col{i}", text=text)
+
+        self.grid.heading("#0", text="ID")
+        self.grid.place(x=200, y=0, width=999, height=599)
+
+    def fnInit(self):
+        self.grid.delete(*self.grid.get_children())
+        self.cnn.connect()
+        data = self.cnn.execute_select("car")
+        for row in data:
+            self.grid.insert("", tk.END, text=row[0], values=row[1:])
+        self.cnn.disconnect()
+
+    def cancel(self):
+        self.buttonSave.place_forget()
+        self.buttonCancel.place_forget()
+        self.grid.place(x=200, y=0, width=999, height=599)
+        self.entry1.config(state="normal")
+        for e in self.entries:
+            e.delete("0", "end")
+        self.buttonUpdate.config(state="normal")
+        self.buttonNew.config(state="normal")
+        self.buttonDelete.config(state="normal")
+        self.buttonSearch.config(state="normal")
+        self.buttonReload.config(state="normal")
+
+    def save(self):
+        try:
+            txtid = int(self.entry1.get())
+            txtmodel = self.entry2.get()
+            txtyear = self.entry3.get()
+            txtcolor = self.entry4.get()
+            txtcapacity = int(self.entry5.get())
+            txtpower = int(self.entry6.get())
+            txttype = self.entry7.get()
+            txttrans = self.entry8.get()
+            txtprice = float(self.entry9.get())
+        except ValueError:
+            messagebox.showerror("Error", "All fields must be valid and filled.")
+            return
+
+        self.cnn.connect()
+
+        if self.entry1.cget("state") == "normal":
+            self.cnn.execute_insert("car", txtid, txtmodel, txtyear, txtcolor,
+                                    txtcapacity, txtpower, txttype, txttrans, txtprice)
+        else:
+            self.cnn.execute_update("car", txtid, txtmodel, txtyear, txtcolor,
+                                    txtcapacity, txtpower, txttype, txttrans, txtprice)
+
+        self.cnn.disconnect()
+        self.fnInit()
+        self.cancel()
+
+    def InsertData(self):
+        self.grid.place(x=500, y=0, width=699, height=599)
+        self.frame2.place(x=200, y=0)
+        self.buttonSave.place(x=10, y=500)
+        self.buttonCancel.place(x=10, y=550)
+        self.disable_actions()
+
+    def disable_actions(self):
+        self.buttonUpdate.config(state="disabled")
+        self.buttonNew.config(state="disabled")
+        self.buttonDelete.config(state="disabled")
+        self.buttonSearch.config(state="disabled")
+        self.buttonReload.config(state="disabled")
+
+    def UpdateData(self):
+        selection = self.grid.selection()
+        if not selection:
+            messagebox.showerror("Error", "Select a row.")
+            return
+
+        self.grid.place(x=500, y=0, width=699, height=599)
+        self.frame2.place(x=200, y=0)
+        self.buttonSave.place(x=10, y=500)
+        self.buttonCancel.place(x=10, y=550)
+        self.disable_actions()
+
+        item = self.grid.item(selection)
+        id_sel = item['text']
+        values = item['values']
+        entries = [id_sel] + list(values)
+
+        for entry, data in zip(self.entries, entries):
+            entry.insert(0, data)
+
+        self.entry1.config(state="disabled")
+
+    def DeleteData(self):
+        selection = self.grid.selection()
+        if not selection:
+            messagebox.showerror("Error", "Select a row to delete.")
+            return
+
+        id_sel = self.grid.item(selection)['text']
+        self.cnn.connect()
+        self.cnn.execute_delete("car", id_sel)
+        self.cnn.disconnect()
+        self.fnInit()
+
+    def total_cars(self):
+        self.cnn.connect()
+        total = self.cnn.count_all("car")
+        self.cnn.disconnect()
+        messagebox.showinfo("Total Cars", f"Total cars: {total}")
+
+    def total_automatic(self):
+        self.cnn.connect()
+        total = self.cnn.count_automatic("car")
+        self.cnn.disconnect()
+        messagebox.showinfo("Automatic Cars", f"Automatic cars: {total}")
+
+    def SearchData(self):
+        new_window = tk.Toplevel(self.root)
+        new_window.title("Search")
+        new_window.resizable(0, 0)
+
+        widthScreen = self.root.winfo_screenwidth()
+        heightScreen = self.root.winfo_screenheight()
+        widthWindow = 700
+        heightWindow = 50
+        pwidth = int(widthScreen / 2 - widthWindow / 2)
+        pheight = int(heightScreen / 2 - heightWindow / 2)
+
+        new_window.geometry(f"{widthWindow}x{heightWindow}+{pwidth}+{pheight-60}")
+
+        radio_var = tk.StringVar()
+        options = [("Id", "option1"), ("Model", "option2"),
+                   ("Year", "option3"), ("Price", "option4")]
+
+        x = 30
+        for text, val in options:
+            ttk.Radiobutton(new_window, text=text, variable=radio_var,
+                            value=val).place(x=x, y=12)
+            x += 70
+
+        entry_search = tk.Entry(new_window, width=30)
+        entry_search.place(x=320, y=14)
+
+        def show_search_data(i, search_text):
+            self.cnn.connect()
+            data = self.cnn.execute_select("car")
+            self.cnn.disconnect()
+            found = [row for row in data if str(row[i]).lower() == search_text.lower()]
+            self.grid.delete(*self.grid.get_children())
+            for row in found:
+                self.grid.insert("", tk.END, text=row[0], values=row[1:])
+            new_window.destroy()
+
+        def get_selected_option(search_text):
+            v = radio_var.get()
+            if v == "option1":
+                show_search_data(0, search_text)
+            elif v == "option2":
+                show_search_data(1, search_text)
+            elif v == "option3":
+                show_search_data(2, search_text)
+            elif v == "option4":
+                show_search_data(8, search_text)
+
+        ttk.Button(new_window, text="Search",
+                   command=lambda: get_selected_option(entry_search.get())
+                   ).place(x=550, y=11)
         </code></pre>
       </div>
 
-      <p>bairdCage.py</p>
-      <div class="code-box">
-        <pre><code>
-class BirdCage:
-    def make_bird_sounds(self, birds: list):
-        for bird in birds:
-            bird.make_sound()
-        </code></pre>
-      </div>
 
-      <p>bird.py</p>
-      <div class="code-box">
-        <pre><code>
-from abc import ABC, abstractmethod
+      <h2>View the PDF to see the outputs</h2>
 
-class Bird(ABC):
-    def __init__(self, color, age, sound=""):
-        self.color = color
-        self.age = age
-        self.sound = sound
-
-    @abstractmethod
-    def make_sound(self):
-        print("Generic Bird Sound")
-        </code></pre>
-      </div>
-
-      <h2>Output</h2>
-      <div class="code-box">
-        <pre><code>
-How many birds do you want to add: 3
-
-Bird 1:
-Enter bird type (sparrow/parrot): sparrow
-Enter color: brown
-Enter age: 2
-
-Bird 2:
-Enter bird type (sparrow/parrot): parrot
-Enter color: green
-Enter age: 3
-
-Bird 3:
-Enter bird type (sparrow/parrot): sparrow
-Enter color: gray
-Enter age: 1
-
-Bird sounds:
-Chirp Chirp!
-Tweet Tweet!
-Chirp Chirp!
-        </code></pre>
-      </div>
       <a href="https://github.com/tayting05/7OOP-Lab-Task/blob/main/Activities/act-pdf/TAYTING-FINALLAB3.pdf" target="_blank" class="btn">
   View PDF Here
 </a>
     </section>
 
-    <footer>Nov 10, 2025 Justine Jay Tayting</footer>
+    <footer>Dec 6, 2025 Justine Jay Tayting</footer>
   </div>
 </body>
 </html>
