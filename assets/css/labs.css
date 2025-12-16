@@ -1,13 +1,13 @@
 :root {
-  --bg: #0f1724;
-  --muted: #9aa4b2;
-  --accent: #6ee7b7;
+  --bg: #4f6932;
+  --muted: #cfd8c3;
+  --accent: #a7c957;
 }
- 
+
 body {
   font-family: Inter, system-ui, sans-serif;
   background: var(--bg);
-  color: #e6eef6;
+  color: #f4f7ef;
   margin: 0;
   padding: 0;
   line-height: 1.6;
@@ -44,7 +44,7 @@ h1 {
 h2 {
   margin-top: 28px;
   font-size: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding-bottom: 6px;
 }
 
@@ -62,8 +62,8 @@ img {
   display: inline-block;
   padding: 8px 14px;
   border-radius: 8px;
-  background: linear-gradient(90deg, var(--accent), #67d4f0);
-  color: #042;
+  background: linear-gradient(90deg, #a7c957, #dce775);
+  color: #2f3e1f;
   font-weight: 600;
   text-decoration: none;
   font-size: 14px;
@@ -77,7 +77,7 @@ footer {
 }
 
 .code-box {
-  background: #1e293b;
+  background: #3f5428;
   padding: 15px;
   border-radius: 8px;
   overflow: auto;
