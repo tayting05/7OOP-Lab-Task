@@ -1,30 +1,48 @@
 :root {
-  --bg: #0f1724;
-  --card: #0b1220;
-  --muted: #9aa4b2;
-  --accent: #6ee7b7;
-  --glass: rgba(255,255,255,0.04);
-}
-
-body.light {
-  --bg: #f5f7fb;
-  --card: #ffffff;
-  --muted: #475569;
-  --accent: #2563eb;
+  --bg: #4f6932;
+  --card: rgba(0, 0, 0, 0.6);
+  --muted: #e5e7eb;
+  --accent: #9ae6b4;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
-  background: linear-gradient(180deg, var(--bg), #081020);
-  color: #e6eef6;
+  color: #ffffff;
 }
 
+
+.video-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+
 .container {
+  position: relative;
+  z-index: 1;
   max-width: 960px;
   margin: auto;
   padding: 24px;
@@ -34,6 +52,7 @@ header {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .avatar {
@@ -49,6 +68,12 @@ header {
   object-fit: cover;
 }
 
+.lead,
+.muted {
+  color: var(--muted);
+}
+
+
 .chip-container {
   list-style: none;
   display: flex;
@@ -63,9 +88,14 @@ header {
   cursor: pointer;
 }
 
+.chip a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .chip:hover {
   background: var(--accent);
-  color: var(--bg);
+  color: #000;
 }
 
 main {
@@ -78,21 +108,49 @@ main {
 .card {
   background: var(--card);
   padding: 18px;
-  border-radius: 10px;
+  border-radius: 12px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.spacer {
+  height: 20px;
+}
+
+.labs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
 }
 
 .lab {
-  background: #071026;
+  background: rgba(0,0,0,0.7);
   padding: 12px;
   border-radius: 8px;
-  transition: transform .2s, box-shadow .2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .lab:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
+.lab a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
 @media (max-width: 900px) {
   main {
     grid-template-columns: 1fr;
